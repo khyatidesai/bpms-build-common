@@ -2,6 +2,7 @@ BPMS_VERSION = "6.5.1"
 BPMS_BUILD_NUMBER ="6.5.1"
 BPMS_SERVER_NAME = "intalio-bpms-ee"
 
+BIRT_VERSION = "2.3.0"
 SPRING_VERSION = "3.1.2.RELEASE"
 
 DATABASE_COMPONENTS =  ["oracle","postgres","db2","derby","sqlserver","mysql","sybase","ingres" ]
@@ -12,7 +13,7 @@ AXIS2_COMPONENTS = [ "deploy-ws-service", "tempo-tms-common", "tempo-tms-service
 APACHEDS_WEBAPP_VERSION = "6.0.0.40"
 AXIS2SERVICES_DEPLOY_WS_VERSION = "6.3.02"
 BAM_SERVICE_VERSION="6.5.0.001"
-BPMSAJAX_VERSION = "6.0.0.35"
+BPMSAJAX_VERSION = "6.0.0.44"
 BPMS_COMMON_VERSION ="1.1.0.003"
 BPMS_CONSOLE_VERSION = "6.5.0.02"
 BPMS_DASHBOARD_VERSION = "1.0.0.04"
@@ -25,21 +26,20 @@ INTALIO_SECURITY_VERSION = "6.5.02"
 MOBI_VERSION ="1.0.5"
 MONITORING_VERSION = "1.0.0.03"
 
-
+PXE_HA_VERSION="6.5.1"
 PXE_HA_DATABASE_CONNECTOR_VERSION = "5.2.0.074"
 PXE_HA_HELLOWORLD_VERSION = "0.3"
 PXE_HA_JDBC_CONNECTOR_VERSION = "5.1.0.009"
 PXE_HA_PROCESSES_VERSION = "6.3.00"
 PXE_HA_REGISTRY_VERSION="1.0.3"
-PXE_HA_VERSION="6.5.1"
 TEMPO_PXE_HA_INTEGRATION_VERSION = "1.0.6"
 
+PXE_VERSION="6.5.1"
 PXE_DATABASE_CONNECTOR_VERSION = "5.2.0.074"
 PXE_HELLOWORLD_VERSION = "0.3"
 PXE_JDBC_CONNECTOR_VERSION = "5.1.0.009"
 PXE_PROCESSES_VERSION = "6.3.00"
 PXE_REGISTRY_VERSION="1.0.3"
-PXE_VERSION="6.5.1"
 ODE_VALIDATOR_VERSION = "1.0.5"
 ODE_VERSION = PXE_VERSION
 
@@ -52,6 +52,8 @@ WDS_VERSION = "#{TEMPO_VERSION}"
 WEBREPORT_VERSION ="6.5.0.001"
 WSI_VERSION = "6.0.3.012"
 XFORMS_MANAGER_VERSION = "6.0.0.54"
+
+#INTALIO WAR Artifacts
 
 APACHEDS_WEBAPP_WAR = "org.intalio.tempo:apacheds-webapp:war:#{APACHEDS_WEBAPP_VERSION}"
 BPMSAJAX = "com.intalio.bpms.ajax:intalioajax:zip:#{BPMSAJAX_VERSION}"
@@ -111,6 +113,7 @@ APACHE_DERBY_CLIENT = "org.apache.derby:derbyclient:jar:#{DERBY_VER}"
 APACHE_DERBY_TOOLS = "org.apache.derby:derbytools:jar:#{DERBY_VER}"
 
 APACHE_DS = "org.apache.apacheds:noarch-installer:jar:1.5.1a"
+APACHE_DS_DEPS = "org.apache.apacheds:apacheds-deps:jar:1.5.4"
 AXIS2_WAR = "org.apache.axis2:axis2-webapp:war:1.5.5"
 AXIS2BRE_WAR = "org.apache.axis2:axis2-webapp:war:1.5-i2"
 AXIOM = group("axiom-api", "axiom-dom", "axiom-impl", :under=>"org.apache.ws.commons.axiom", :version=>"1.2.11")
@@ -123,6 +126,8 @@ BATIK = group(%w{
   batik-parser    batik-script      batik-svg-dom   batik-svggen
   batik-swing     batik-transcoder  batik-util      batik-xml},
   :under=>"batik", :version=>"1.6")
+
+BIRT_WAR  = artifact("org.eclipse.birt:birt-webapp:war:#{BIRT_VERSION}")
 
 BTM = {
   :core => "org.codehaus.btm:btm:jar:2.1.3", 
@@ -179,7 +184,6 @@ INTALIO_LICENSE = "com.intalio.bpms.license:license:jar:1.1"
 ITEXT = "itext:itext:jar:1.3.1"
 
 JARGS = "jargs:jargs:jar:1.0"
-JAVAMAIL = ["org.apache.geronimo.specs:geronimo-javamail_1.4_spec:jar:1.6", "org.apache.geronimo.specs:geronimo-activation_1.1_spec:jar:1.0.2" ]
 JAXEN = "jaxen:jaxen:jar:1.1.1"
 JASYPT = "org.jasypt:jasypt:jar:1.8"
 JBI  = group("org.apache.servicemix.specs.jbi-api-1.0", :under=>"org.apache.servicemix.specs", :version=>"1.1.0")
@@ -310,7 +314,7 @@ JAVAX               = struct(
   :stream           => STAX_API,
   :transaction      => GERONIMO_SPECS[:jta]
 )
-
+JAVAMAIL = [ JAVAX[:javamail], "org.apache.geronimo.specs:geronimo-activation_1.1_spec:jar:1.0.2" ]
 INSTINCT = [
   "com.googlecode.instinct:instinct:jar:0.1.6",
   "org.jmock:jmock:jar:2.5.0",
@@ -394,25 +398,25 @@ MY_FACES = [
   "org.apache.myfaces.core:myfaces-impl:jar:1.1.5"
 ]
 
+SERP = "net.sourceforge.serp:serp:jar:1.13.1"
+PXE_OPENJPA = "org.apache.openjpa:openjpa:jar:1.2.2"
+OPENJPA = "org.apache.openjpa:openjpa:jar:2.1.0"
+OPENJPA_ALL = "org.apache.openjpa:openjpa-all:jar:2.1.1"
+
 APACHE_JPA_1_x = [
   APACHE_COMMONS[:lang],
   APACHE_COMMONS[:collections],
   GERONIMO_SPECS[:jta],
   GERONIMO_SPECS[:jpa],
-  "serp:serp:jar:1.13.1"
+  SERP
 ]
 APACHE_JPA_2_0_0 = [
   APACHE_COMMONS[:lang],
   APACHE_COMMONS[:collections],
   GERONIMO_SPECS[:jta],
-  "org.apache.openjpa:openjpa-all:jar:2.1.1",
-  "serp:serp:jar:1.13.1"  
+  OPENJPA_ALL,
+  SERP 
 ]
-
-SERP = "net.sourceforge.serp:serp:jar:1.13.1"
-PXE_OPENJPA = "org.apache.openjpa:openjpa:jar:1.2.2"
-OPENJPA = "org.apache.openjpa:openjpa:jar:2.1.0"
-OPENJPA_ALL = "org.apache.openjpa:openjpa-all:jar:2.1.1"
 
 APACHE_JPA = APACHE_JPA_2_0_0
 
@@ -453,17 +457,6 @@ CAS_LIBS = [
   "taglibs:standard:jar:1.1.2"
 ]
 
-DEPLOY_API = "org.intalio.deploy:deploy-api:jar:6.3.02"
-DEPLOY_CLUSTERING  = [ "org.intalio.deploy:deploy-impl:jar:6.3.02", "org.springframework:spring:jar:2.5.5" ]
-REGISTRY = "org.intalio.deploy:deploy-registry:jar:#{AXIS2SERVICES_DEPLOY_WS_VERSION}"
-SECURITY = { 
-  :client => "org.intalio.security:security-ws-client:jar:#{INTALIO_SECURITY_VERSION}",
-  :nutbolts => "org.intalio.security:security-web-nutsNbolts:jar:#{INTALIO_SECURITY_VERSION}",
-  :common => "org.intalio.security:security-ws-common:jar:#{INTALIO_SECURITY_VERSION}",
-  :api => "org.intalio.security:security-api:jar:#{INTALIO_SECURITY_VERSION}",
-}
-
-
 SOJO_OPTIONAL = ["net.sf:sojo-optional:jar:0.5.0"]
 SOJO = [ "net.sf.sojo:sojo:jar:1.0.5","net.sf:sojo-optional:jar:0.5.0" ]
 
@@ -471,42 +464,6 @@ ASPECTJ = {
 :rt => "org.aspectj:aspectjrt:jar:1.6.12",
 :weaver => "org.aspectj:aspectjweaver:jar:1.6.12" 
 }
-BPMS_COMMON = ["com.intalio.bpms.common:bpms-common:jar:#{BPMS_COMMON_VERSION}"]
-INTALIO_DEPLOY = group("deploy-api", "deploy-ws-common", "deploy-ws-client", 
-                       :under=>"org.intalio.deploy", :version=>"6.3.02")
-ODE_LIBS = {
-  :odeaxis2 => "com.intalio.bpms.pxe:ode-axis2:jar:#{ODE_VERSION}",
-  :odebpelapi => "com.intalio.bpms.pxe:ode-bpel-api:jar:#{ODE_VERSION}",
-  :odebpelapijca => "com.intalio.bpms.pxe:ode-bpel-api-jca:jar:#{ODE_VERSION}",
-  :odebpelcompiler => "com.intalio.bpms.pxe:ode-bpel-compiler:jar:#{ODE_VERSION}",
-  :odebpelconnector => "com.intalio.bpms.pxe:ode-bpel-connector:jar:#{ODE_VERSION}",
-  :odebpelepr => "com.intalio.bpms.pxe:ode-bpel-epr:jar:#{ODE_VERSION}",
-  :odebpelobj => "com.intalio.bpms.pxe:ode-bpel-obj:jar:#{ODE_VERSION}",
-  :odebpelschemas => "com.intalio.bpms.pxe:ode-bpel-schemas:jar:#{ODE_VERSION}",
-  :odejcara => "com.intalio.bpms.pxe:ode-jca-ra:jar:#{ODE_VERSION}",
-  :odejcaserver => "com.intalio.bpms.pxe:ode-jca-server:jar:#{ODE_VERSION}",
-  :odetools => "com.intalio.bpms.pxe:ode-tools:jar:#{ODE_VERSION}",
-  :odeutils => "com.intalio.bpms.pxe:ode-utils:jar:#{ODE_VERSION}",
-}
-
-
-PXE = ODE_LIBS
-
-
-CONSOLE = ["com.intalio.bpms.console-common:console-common-webapp:jar:#{BPMS_CONSOLE_VERSION}",
-           "com.intalio.bpms.console-common:console-common-models:jar:#{BPMS_CONSOLE_VERSION}"]
-
-TEMPO_COMMON = "org.intalio.tempo:tempo-tms-common:jar:"
-
-TEMPO = {
-  :uifw => "org.intalio.tempo:tempo-ui-fw:jar:#{TEMPO_VERSION}",
-  :tmscommon => "org.intalio.tempo:tempo-tms-common:jar:#{TEMPO_VERSION}",
-  :tmsservice => "org.intalio.tempo:tempo-tms-service:jar:#{TEMPO_VERSION}",
-  :tmsaxis => "org.intalio.tempo:tempo-tms-axis:jar:#{TEMPO_VERSION}",
-  :tmsclient => "org.intalio.tempo:tempo-tms-client:jar:#{TEMPO_VERSION}",
-  :daonutbolts => "org.intalio.tempo:tempo-dao-nutsNbolts:jar:#{TEMPO_VERSION}",
-}
-TMP_CLIENT=["org.intalio.tempo.workflow.tmp:tmp-client:jar:1.0.0.0"]
 
 HIBERNATE_VALIDATOR = "org.hibernate:hibernate-validator:jar:3.0.0.ga"
 
@@ -541,6 +498,7 @@ SYBASE_DRIVER = "sybase:jconnect:jar:4.3"
 TOMCAT_5 = "org.apache.tomcat:apache-tomcat:zip:5.5.33"
 TOMCAT_6 = "org.apache.tomcat:apache-tomcat:zip:6.0.16"
 TOMCAT_7 = "org.apache.tomcat:apache-tomcat:zip:7.0.23"
+TOMCAT_CATALINA = "org.apache.tomcat:catalina:jar:6.0.35"
 TOMCAT_DERBY="com.intalio.bpms.derby:derby-tomcat-resource:jar:1.5"
 TOMCAT_JULI = {
   :adapters => "org.apache.tomcat.extras:tomcat-extras-juli-adapters:jar:7.0.23", 
@@ -565,7 +523,7 @@ SERVICEMIX          = [
                         "org.codehaus.woodstox:wstx-asl:jar:3.2.2",
                         "org.apache.geronimo.specs:geronimo-activation_1.1_spec:jar:1.0.1",
                         "org.apache.geronimo.specs:geronimo-annotation_1.0_spec:jar:1.1",
-                        "org.apache.geronimo.specs:geronimo-javamail_1.4_spec:jar:1.2",
+                        JAVAX[:javamail],
                         "org.apache.geronimo.specs:geronimo-stax-api_1.0_spec:jar:1.0.1",
                         "org.apache.geronimo.specs:geronimo-jms_1.1_spec:jar:1.1",
                         "org.jencks:jencks:jar:2.1",
@@ -590,3 +548,207 @@ ACTIVEMQ_AXIS2      = ["org.apache.activemq:activemq-core:jar:5.2.0",
                         JAVAX[:management]]
 
 JACKSON = ["org.codehaus.jackson:jackson-mapper-asl:jar:1.9.9","org.codehaus.jackson:jackson-core-asl:jar:1.9.9"]
+
+# the list of dependencies below has been generated
+ORBEON_LIBS = ["orbeon:activation-1_0_2:jar:3.8.0.201005141856-CE",
+"orbeon:ant-1_6_5:jar:3.8.0.201005141856-CE",
+"orbeon:ant-jsch-1_6_5:jar:3.8.0.201005141856-CE",
+"orbeon:antlr-2_7_4_orbeon:jar:3.8.0.201005141856-CE",
+"orbeon:avalon-framework-4_2_0:jar:3.8.0.201005141856-CE",
+"orbeon:axis_1_2_1-axis:jar:3.8.0.201005141856-CE",
+"orbeon:axis_1_2_1-jaxrpc:jar:3.8.0.201005141856-CE",
+"orbeon:axis_1_2_1-saaj:jar:3.8.0.201005141856-CE",
+"orbeon:axis_1_2_1-wsdl4j-1.5.1:jar:3.8.0.201005141856-CE",
+"orbeon:barcode4j-1.0:jar:3.8.0.201005141856-CE",
+"orbeon:batik-all-1_6:jar:3.8.0.201005141856-CE",
+"orbeon:castor-0_9_4_3-xml:jar:3.8.0.201005141856-CE",
+"orbeon:commons-beanutils-1_5:jar:3.8.0.201005141856-CE",
+"orbeon:commons-cli-1_0:jar:3.8.0.201005141856-CE",
+"orbeon:commons-codec-1_3:jar:3.8.0.201005141856-CE",
+"orbeon:commons-collections-3_1:jar:3.8.0.201005141856-CE",
+"orbeon:commons-digester-1_5:jar:3.8.0.201005141856-CE",
+"orbeon:commons-discovery-0_2:jar:3.8.0.201005141856-CE",
+"orbeon:commons-fileupload-1.2.1:jar:3.8.0.201005141856-CE",
+"orbeon:commons-httpclient-3_1:jar:3.8.0.201005141856-CE",
+"orbeon:commons-io-1_1:jar:3.8.0.201005141856-CE",
+"orbeon:commons-lang-2_3:jar:3.8.0.201005141856-CE",
+"orbeon:commons-logging-1_0_4:jar:3.8.0.201005141856-CE",
+"orbeon:commons-pool-1.3:jar:3.8.0.201005141856-CE",
+"orbeon:commons-validator-1_0_2:jar:3.8.0.201005141856-CE",
+"orbeon:dom4j-1_6_1:jar:3.8.0.201005141856-CE",
+"orbeon:exist-1_2_6_orbeon_20090702:jar:3.8.0.201005141856-CE",
+"orbeon:exist-antlr-2_7_6:jar:3.8.0.201005141856-CE",
+"orbeon:exist-jgroups-all-exist:jar:3.8.0.201005141856-CE",
+"orbeon:exist-jta:jar:3.8.0.201005141856-CE",
+"orbeon:exist-modules-1_2_6_orbeon_20090702:jar:3.8.0.201005141856-CE",
+"orbeon:exist-ngram-module-1_2_6_orbeon_20090702:jar:3.8.0.201005141856-CE",
+"orbeon:exist-optional-1_2_6_orbeon_20090702:jar:3.8.0.201005141856-CE",
+"orbeon:exist-quartz-1_6_0:jar:3.8.0.201005141856-CE",
+"orbeon:exist-stax-api-1_0_1:jar:3.8.0.201005141856-CE",
+"orbeon:exist-ws-commons-util-1.0.2:jar:3.8.0.201005141856-CE",
+"orbeon:exist-xmldb:jar:3.8.0.201005141856-CE",
+"orbeon:exist-xmlrpc-client-3_1_1:jar:3.8.0.201005141856-CE",
+"orbeon:exist-xmlrpc-common-3_1_1:jar:3.8.0.201005141856-CE",
+"orbeon:exist-xmlrpc-server-3_1_1:jar:3.8.0.201005141856-CE",
+"orbeon:flyingsaucer-20100212-itext-2_1_7:jar:3.8.0.201005141856-CE",
+"orbeon:flyingsaucer-core-renderer_orbeon_20100512:jar:3.8.0.201005141856-CE",
+"orbeon:fop-0_93:jar:3.8.0.201005141856-CE",
+"orbeon:hsqldb-1_8_0_7:jar:3.8.0.201005141856-CE",
+"orbeon:itext-bcmail-jdk14-138:jar:3.8.0.201005141856-CE",
+"orbeon:itext-bcprov-jdk14-138:jar:3.8.0.201005141856-CE",
+"orbeon:jakarta-oro-2_0_8_orbeon:jar:3.8.0.201005141856-CE",
+"orbeon:jakarta-poi-1.11.0-dev-20030610:jar:3.8.0.201005141856-CE",
+"orbeon:jakarta-slide-webdavlib-2.0rc1:jar:3.8.0.201005141856-CE",
+"orbeon:jaxen-1_1_beta_9:jar:3.8.0.201005141856-CE",
+"orbeon:jcommon-1.0.12:jar:3.8.0.201005141856-CE",
+"orbeon:jfreechart-1.0.9:jar:3.8.0.201005141856-CE",
+"orbeon:jms-api-1_1:jar:3.8.0.201005141856-CE",
+"orbeon:jsch-0.1.42:jar:3.8.0.201005141856-CE",
+"orbeon:jtidy-8.0-20060801.131059-3:jar:3.8.0.201005141856-CE",
+"orbeon:junit:jar:3.8.0.201005141856-CE",
+"orbeon:log4j-1_2_15:jar:3.8.0.201005141856-CE",
+"orbeon:mail-1_3_2:jar:3.8.0.201005141856-CE",
+"orbeon:metadata-extractor-2_1:jar:3.8.0.201005141856-CE",
+"orbeon:msv-20081113_orbeon_20081209:jar:3.8.0.201005141856-CE",
+"orbeon:msv-isorelax-20070407:jar:3.8.0.201005141856-CE",
+"orbeon:msv-relaxngDatatype-20070407:jar:3.8.0.201005141856-CE",
+"orbeon:msv-xsdlib-20070407_orbeon_20100309:jar:3.8.0.201005141856-CE",
+"orbeon:orbeon-form-builder:jar:3.8.0.201005141856-CE",
+"orbeon:orbeon-form-runner:jar:3.8.0.201005141856-CE",
+"orbeon:orbeon-resources-private:jar:3.8.0.201005141856-CE",
+"orbeon:orbeon-resources-public:jar:3.8.0.201005141856-CE",
+"orbeon:orbeon-xforms-filter:jar:3.8.0.201005141856-CE",
+"orbeon:orbeon:jar:3.8.0.201005141856-CE",
+"orbeon:pdfbox-0_7_1:jar:3.8.0.201005141856-CE",
+"orbeon:saxon-9-1-0-8_orbeon_20100413:jar:3.8.0.201005141856-CE",
+"orbeon:saxpath-dev_orbeon:jar:3.8.0.201005141856-CE",
+"orbeon:tagsoup-1.2:jar:3.8.0.201005141856-CE",
+"orbeon:xerces-resolver-2_9_orbeon_20070711:jar:3.8.0.201005141856-CE",
+"orbeon:xerces-serializer-2_9_orbeon_20070711:jar:3.8.0.201005141856-CE",
+"orbeon:xerces-xercesImpl-2_9_orbeon_20070711:jar:3.8.0.201005141856-CE",
+"orbeon:xerces-xml-apis-2_9_orbeon_20070711:jar:3.8.0.201005141856-CE",
+"orbeon:xmlgraphics-commons-1_1:jar:3.8.0.201005141856-CE"
+]
+
+ORBEON_AXIS = [
+ "orbeon:axis-orbeon:jar:1.2.1",
+ "orbeon:axis-jaxrpc:jar:1.2.1",
+ "orbeon:axis-saaj:jar:1.2.1",
+ "orbeon:axis-wsdl4j:jar:1.2.1-1.5.1"
+]
+ORBEON_XERCES = [
+  group("xerces-resolver", "xerces-serializer", "xerces-xml-apis", "xerces-xercesImpl", :under => "orbeon" , :version => "2_9_orbeon_20070711")
+]
+ORBEON_CORE = [
+  group("orbeon", "orbeon-xforms-filter", "orbeon-resources-public", "orbeon-resources-private", :under=>"ops", :version=>"3.6.0.200712061930"),
+]
+ORBEON_CUSTOM = [
+  ORBEON_XERCES,
+  "orbeon:jakarta-oro-orbeon:jar:2.0.8",
+  #"orbeon:saxon-orbeon:jar:8_8_orbeon_20070817" is buggy, 
+  # the saxon-orbeon jar below is a slightly modified version
+  # that works
+  "orbeon-saxon:orbeon-saxon:jar:8.8-intalio-2",
+  "orbeon:saxpath:jar:dev_orbeon",
+  "orbeon:xsltc-orbeon:jar:2.5.1",
+  "orbeon:xalan-orbeon:jar:2.5.1",
+  
+  #  Not needed unless we want to force server caching for xforms
+  # "orbeon:xmldb-exist:jar:1_1_1",
+  # "orbeon:exist:jar:1.1.1",
+  # "orbeon:xmlrpc:jar:1.2-patched-exist_1_1_1",
+  # "orbeon:antlr:jar:antlr-2.7.6-exist_1_1_1",
+  # "orbeon:exist-optional:jar:1.1.1"
+]
+
+ORBEON_COMMONS = [
+  APACHE_COMMONS[:beanutils],
+  APACHE_COMMONS[:codec],
+  APACHE_COMMONS[:collections],
+  APACHE_COMMONS[:digester],
+  APACHE_COMMONS[:discovery],
+  APACHE_COMMONS[:fileupload],
+  APACHE_COMMONS[:httpclient],
+  APACHE_COMMONS[:io],
+  APACHE_COMMONS[:lang],
+  APACHE_COMMONS[:pool],
+  APACHE_COMMONS[:validator],
+]
+
+ORBEON_MSV = [
+  group("msv", "isorelax", "relaxng-datatype","xsdlib", :under => "msv", :version => "20070407")
+]
+
+ORBEON_LIBS_NO_JAXEN = [
+  JAVAMAIL,
+  ORBEON_AXIS,
+  ORBEON_COMMONS,
+  ORBEON_CORE,
+  ORBEON_CUSTOM,
+  ORBEON_MSV,
+  DOM4J,
+  GERONIMO_SPECS[:jms],
+  "jdom:jdom:jar:b9",
+  "struts:struts:jar:1.2.9",
+  "jtidy:jtidy:jar:8.0-20060801.131059-3",
+  "backport-util-concurrent:backport-util-concurrent:jar:2.2"
+]
+
+WSI_ORBEON_LIBS = [
+  ORBEON_LIBS_NO_JAXEN,
+  JAXEN
+]
+
+
+### End of the orbeon gamut ###
+
+
+
+#Intalio modules#
+
+DEPLOY_API = "org.intalio.deploy:deploy-api:jar:#{AXIS2SERVICES_DEPLOY_WS_VERSION}"
+DEPLOY_CLUSTERING  = [ "org.intalio.deploy:deploy-impl:jar:#{AXIS2SERVICES_DEPLOY_WS_VERSION}", "org.springframework:spring:jar:2.5.5" ]
+INTALIO_DEPLOY = group("deploy-api", "deploy-ws-common", "deploy-ws-client", 
+                       :under=>"org.intalio.deploy", :version=>"#{AXIS2SERVICES_DEPLOY_WS_VERSION}")
+
+REGISTRY = "org.intalio.deploy:deploy-registry:jar:#{AXIS2SERVICES_DEPLOY_WS_VERSION}"
+
+SECURITY = { 
+  :client => "org.intalio.security:security-ws-client:jar:#{INTALIO_SECURITY_VERSION}",
+  :nutbolts => "org.intalio.security:security-web-nutsNbolts:jar:#{INTALIO_SECURITY_VERSION}",
+  :common => "org.intalio.security:security-ws-common:jar:#{INTALIO_SECURITY_VERSION}",
+  :api => "org.intalio.security:security-api:jar:#{INTALIO_SECURITY_VERSION}",
+}
+
+BPMS_COMMON = ["com.intalio.bpms.common:bpms-common:jar:#{BPMS_COMMON_VERSION}"]
+
+ODE_LIBS = {
+  :odeaxis2 => "com.intalio.bpms.pxe:ode-axis2:jar:#{ODE_VERSION}",
+  :odebpelapi => "com.intalio.bpms.pxe:ode-bpel-api:jar:#{ODE_VERSION}",
+  :odebpelapijca => "com.intalio.bpms.pxe:ode-bpel-api-jca:jar:#{ODE_VERSION}",
+  :odebpelcompiler => "com.intalio.bpms.pxe:ode-bpel-compiler:jar:#{ODE_VERSION}",
+  :odebpelconnector => "com.intalio.bpms.pxe:ode-bpel-connector:jar:#{ODE_VERSION}",
+  :odebpelepr => "com.intalio.bpms.pxe:ode-bpel-epr:jar:#{ODE_VERSION}",
+  :odebpelobj => "com.intalio.bpms.pxe:ode-bpel-obj:jar:#{ODE_VERSION}",
+  :odebpelschemas => "com.intalio.bpms.pxe:ode-bpel-schemas:jar:#{ODE_VERSION}",
+  :odejcara => "com.intalio.bpms.pxe:ode-jca-ra:jar:#{ODE_VERSION}",
+  :odejcaserver => "com.intalio.bpms.pxe:ode-jca-server:jar:#{ODE_VERSION}",
+  :odetools => "com.intalio.bpms.pxe:ode-tools:jar:#{ODE_VERSION}",
+  :odeutils => "com.intalio.bpms.pxe:ode-utils:jar:#{ODE_VERSION}",
+}
+
+PXE = ODE_LIBS
+
+CONSOLE = ["com.intalio.bpms.console-common:console-common-webapp:jar:#{BPMS_CONSOLE_VERSION}",
+           "com.intalio.bpms.console-common:console-common-models:jar:#{BPMS_CONSOLE_VERSION}"]
+TEMPO = {
+  :uifw => "org.intalio.tempo:tempo-ui-fw:jar:#{TEMPO_VERSION}",
+  :tmscommon => "org.intalio.tempo:tempo-tms-common:jar:#{TEMPO_VERSION}",
+  :tmsservice => "org.intalio.tempo:tempo-tms-service:jar:#{TEMPO_VERSION}",
+  :tmsaxis => "org.intalio.tempo:tempo-tms-axis:jar:#{TEMPO_VERSION}",
+  :tmsclient => "org.intalio.tempo:tempo-tms-client:jar:#{TEMPO_VERSION}",
+  :daonutbolts => "org.intalio.tempo:tempo-dao-nutsNbolts:jar:#{TEMPO_VERSION}"
+}
+TEMPO_COMMON = TEMPO[:tmscommon]
+
+TMP_CLIENT=["org.intalio.tempo.workflow.tmp:tmp-client:jar:1.0.0.0"]
