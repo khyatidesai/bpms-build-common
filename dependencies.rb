@@ -1,15 +1,34 @@
 BPMS_VERSION = "6.5.1"
 BPMS_BUILD_NUMBER ="6.5.1"
-BPMS_SERVER_NAME = "intalio-bpms-ee"
+
+BPMS_SERVER_NAME = "intalio-bpms"
+BPMS_SERVER_NAME_EE = "intalio-bpms-ee"
 
 BIRT_VERSION = "2.3.0"
 SPRING_VERSION = "3.1.2.RELEASE"
 
-DATABASE_COMPONENTS =  ["oracle","postgres","db2","derby","sqlserver","mysql","sybase","ingres" ]
-PXE_HA_COMPONENTS =  ["database-connector", "helloworld-process", "jdbc-connector","registry", "tempo-pxe-integration", "workflow-processes"]
-AXIS2_COMPONENTS = [ "deploy-ws-service", "tempo-tms-common", "tempo-tms-service", "tempo-tas-service-with-alfresco","security-ws-service","bam-service"]
+/#FOR CE VERSION#/
+COMPONENTS = ["pxe", "console", "monitoring", "bpms-dashboard","ode-validator", "axis2-services", "gi-webapp", "wsi", "ui-fw", "wds", "xforms-manager" ,"tomcat-5","server-common", "tmp-process-handler"]
+DATABASE_COMPONENTS = ["derby","mysql"]
+PXE_COMPONENTS =  ["database-connector", "helloworld-process","jdbc-connector","registry", "tempo-pxe-integration", "workflow-processes"]
+AXIS2_COMPONENTS_EE = [ "deploy-ws-service", "tempo-tms-common","tempo-tms-service","tempo-tas-service-with-alfresco","security-ws-service","bam-service"]
+SERVER_NAMES =["tomcat-5"]
+CHOICES = [DATABASE_COMPONENTS, SERVER_NAMES]#Do not change the order of this. Incase an extra parrameter is added add it to the end.
 
+/#FOR EE VERSION#/
+COMPONENTS_EE = ["pxe-ha", "console", "monitoring", "mobi", "bpms-dashboard","ode-validator", "axis2-services", "webreport", "gi-webapp", "wsi", "ui-fw","fds", "wds", "bre", "xforms-manager" ,"apacheds-webapp", "cas-webapp","server-common", "tmp-process-handler"]
+DATABASE_COMPONENTS_EE = ["oracle","postgres","db2","derby","sqlserver","mysql","sybase","ingres" ]
+PXE_HA_COMPONENTS =  ["database-connector", "helloworld-process","jdbc-connector","registry", "tempo-pxe-integration", "workflow-processes"]
+AXIS2_COMPONENTS = [ "deploy-ws-service", "tempo-tms-service","tempo-tas-service","security-ws-service"]
+SERVER_NAMES_EE =["geronimo","tomcat-5","tomcat-6","tomcat-7","jboss","jboss43","jboss43ear","jboss61ear","jboss7","weblogic9","weblogic10"]
+CHOICES_EE = [DATABASE_COMPONENTS_EE, SERVER_NAMES_EE]#Do not change the order of this. Incase an extra parrameter is added add it to the end.
 
+/#Common Components or Variables#/
+BRE_COMPONENTS = ["com.intalio.bre-dtdeployment"]
+TMP_PROCESS_HANDLER_COMPONENT=["security"]
+CHOICE_NAMES = ["database", "server"] #Do not change the order of this. Incase an extra parrameter is added add it to the end.
+
+#The versions of the BPMS COMPONENTS can be set here
 APACHEDS_WEBAPP_VERSION = "6.0.0.40"
 AXIS2SERVICES_DEPLOY_WS_VERSION = "6.3.02"
 BAM_SERVICE_VERSION="6.5.0.001"
@@ -17,6 +36,7 @@ BPMSAJAX_VERSION = "6.0.0.44"
 BPMS_COMMON_VERSION ="1.1.0.003"
 BPMS_CONSOLE_VERSION = "6.5.0.02"
 BPMS_DASHBOARD_VERSION = "1.0.0.04"
+BPMS_DERBY_TOMCAT_VERSION="1.5"
 BRE_VERSION = "6.0.0.70"
 CAS_WEBAPP_VERSION= "6.0.0.35"
 TEMPO_VERSION="6.5.0.004"
@@ -43,22 +63,24 @@ PXE_REGISTRY_VERSION="1.0.3"
 ODE_VALIDATOR_VERSION = "1.0.5"
 ODE_VERSION = PXE_VERSION
 
-
 REGISTRY_VERSION = PXE_HA_VERSION ?PXE_HA_REGISTRY_VERSION : PXE_REGISTRY_VERSION
 TEMPO_PXE_INTEGRATION_VERSION = "1.0.6"
+TEMPO_TAS_SERVICE="6.0.0.54"
+TEMPO_TAS_SERVICE_WITH_ALFRESCO_VERSION="6.0.0.54"
+TMP_CLIENT_VERSION="1.0.0.0"
 TMP_PROCESS_HANDLER_VERSION="1.0.2"
 UIFW_VERSION = "#{TEMPO_VERSION}"
 WDS_VERSION = "#{TEMPO_VERSION}"
-WEBREPORT_VERSION ="6.5.0.001"
+WEBREPORT_VERSION="#{BAM_SERVICE_VERSION}"
 WSI_VERSION = "6.0.3.012"
 XFORMS_MANAGER_VERSION = "6.0.0.54"
 
 #INTALIO WAR Artifacts
 
-APACHEDS_WEBAPP_WAR = "org.intalio.tempo:apacheds-webapp:war:#{APACHEDS_WEBAPP_VERSION}"
+APACHEDS_WEBAPP_WAR ="org.intalio.tempo:apacheds-webapp:war:#{APACHEDS_WEBAPP_VERSION}"
 BPMSAJAX = "com.intalio.bpms.ajax:intalioajax:zip:#{BPMSAJAX_VERSION}"
-BPMS_CONSOLE_WAR = "com.intalio.bpms.console:intalio-bpms-console-webapp:war:#{BPMS_CONSOLE_VERSION}"
-BPMS_DASHBOARD_WAR = "com.intalio.bpms.dashboard:bpms-dashboard:war:#{BPMS_DASHBOARD_VERSION}"
+BPMS_CONSOLE_WAR ="com.intalio.bpms.console:intalio-bpms-console-webapp:war:#{BPMS_CONSOLE_VERSION}"
+BPMS_DASHBOARD_WAR ="com.intalio.bpms.dashboard:bpms-dashboard:war:#{BPMS_DASHBOARD_VERSION}"
 CAS_WEBAPP_WAR = "org.intalio.tempo:cas-webapp:war:#{CAS_WEBAPP_VERSION}"
 DATABASE_CONNECTOR = "com.intalio.bpms.connectors:com.intalio.bpms.connectors.jdbc.runtime:mar:#{PXE_DATABASE_CONNECTOR_VERSION}"
 FDS_MODULE = "org.intalio.tempo:tempo-fds:mar:#{FDS_VERSION}"
@@ -72,18 +94,19 @@ PXE_HA_JDBC_CONNECTOR = "com.intalio.bpms.connectors:com.intalio.bpms.connectors
 PXE_HA_DATABASE_CONNECTOR = "com.intalio.bpms.connectors:com.intalio.bpms.connectors.jdbc.runtime:mar:#{PXE_HA_DATABASE_CONNECTOR_VERSION}"
 PXE_HA_WAR = "com.intalio.bpms.pxe:ode-axis2ha-war:war:#{PXE_HA_VERSION}"
 PXE_HA_XPATH_EXT = "org.intalio.tempo:tempo-processes-xpath-extensions:jar:#{PXE_HA_PROCESSES_VERSION}"
-TEMPO_PXE_INTEGRATION = "org.intalio.tempo:tempo-pxe-integration:jar:#{TEMPO_PXE_INTEGRATION_VERSION}"
-TEMPO_PXE_HA_INTEGRATION = "org.intalio.tempo:tempo-pxe-integration:jar:#{TEMPO_PXE_HA_INTEGRATION_VERSION}"
-TMP_PROCESS_HANDLER = "org.intalio.tmp:tmp-process-handler:mar:#{TMP_PROCESS_HANDLER_VERSION}"
+TEMPO_PXE_INTEGRATION ="org.intalio.tempo:tempo-pxe-integration:jar:#{TEMPO_PXE_INTEGRATION_VERSION}"
+TEMPO_PXE_HA_INTEGRATION ="org.intalio.tempo:tempo-pxe-integration:jar:#{TEMPO_PXE_HA_INTEGRATION_VERSION}"
+TMP_PROCESS_HANDLER ="org.intalio.tmp:tmp-process-handler:mar:#{TMP_PROCESS_HANDLER_VERSION}"
 TMS_SERVICE = "org.intalio.tempo:tempo-tms-service:aar:#{TEMPO_VERSION}"
 UIFW_WAR = "org.intalio.tempo:tempo-ui-fw:war:#{UIFW_VERSION}"
 WDS_WAR = "org.intalio.tempo:tempo-wds-service:war:#{WDS_VERSION}"
-WEBREPORT_WAR = "com.intalio.bpms.bam:bam-webreport:war:#{WEBREPORT_VERSION}"
+WEBREPORT_WAR = "com.intalio.bpms.bam:bam-webreport:war:#{BAM_SERVICE_VERSION}"
 WSI_WAR = "com.intalio.bpms.wsi:intalio-bpms-wsi:war:#{WSI_VERSION}"
 GI_WAR = "com.intalio.bpms.gi:gi-webapp:war:#{GI_WEBAPP_VERSION }"
 XPATH_EXT = "org.intalio.tempo:tempo-processes-xpath-extensions:jar:#{PXE_PROCESSES_VERSION}"
 XFORMS_WAR = "org.intalio.tempo:xforms-manager:war:#{XFORMS_MANAGER_VERSION}"
 
+#EXTERNAL ARTIFACTS
 ANNONGEN = "annogen:annogen:jar:0.1.0"
 ANT = [ "org.apache.ant:ant:jar:1.7.1" ]
 ANTLR = [ "antlr:antlr:jar:2.7.6" ]
@@ -116,7 +139,7 @@ APACHE_DS = "org.apache.apacheds:noarch-installer:jar:1.5.1a"
 APACHE_DS_DEPS = "org.apache.apacheds:apacheds-deps:jar:1.5.4"
 AXIS2_WAR = "org.apache.axis2:axis2-webapp:war:1.5.5"
 AXIS2BRE_WAR = "org.apache.axis2:axis2-webapp:war:1.5-i2"
-AXIOM = group("axiom-api", "axiom-dom", "axiom-impl", :under=>"org.apache.ws.commons.axiom", :version=>"1.2.11")
+AXIOM = group("axiom-api", "axiom-dom", "axiom-impl",:under=>"org.apache.ws.commons.axiom", :version=>"1.2.11")
 
 BACKPORT = "backport-util-concurrent:backport-util-concurrent:jar:3.1"
 
@@ -149,7 +172,8 @@ DSIG = "javax.xml.xmldsig:xmldsig:jar:1.0"
 DOM4J = "dom4j:dom4j:jar:1.6.1"
 
 EASYMOCK = "easymock:easymock:jar:2.0"
-EMAIL_CONNECTOR = "com.intalio.bpms.connectors:com.intalio.bpms.connectors.email:aar:1.9"
+EMAIL_CONNECTOR =
+"com.intalio.bpms.connectors:com.intalio.bpms.connectors.email:aar:1.9"
 
 FOP = [ "fop:fop:jar:0.20.5" ]
 
@@ -172,7 +196,7 @@ GERONIMO = {
 GERONIMO_JETTY = "org.apache.geronimo:geronimo-jetty6-jee5:zip:2.0.1"
 GSON = ["com.google.code.gson:gson:jar:1.7.1"]
 
-HSQLDB              = "hsqldb:hsqldb:jar:1.8.0.7"
+HSQLDB = "hsqldb:hsqldb:jar:1.8.0.7"
 
 ICAL = "ical4j:ical4j:jar:0.9.20"
 ICU4J = "com.ibm.icu:icu4j:jar:3.4.4"
@@ -193,7 +217,7 @@ JBOSS7 = "jboss:jboss-appserver:zip:7.1.1.FINAL"
 JCA = [ "javax.resource:connector-api:jar:1.5" ]
 JDOM = "jdom:jdom:jar:1.0"
 JENCKS = "jencks:jencks-all:jar:1.1.3"
-JETTY = [group("jetty", "jetty-util", :under=>"org.mortbay.jetty", :version=>"6.1.10")]
+JETTY = [group("jetty", "jetty-util", :under=>"org.mortbay.jetty",:version=>"6.1.10")]
 JIBX  = "jibx:jibx-run:jar:1.1-beta3"
 JODATIME = "joda-time:joda-time:jar:1.5.2"
 JPA = [ "javax.persistence:persistence-api:jar:1.0" ]
@@ -205,8 +229,8 @@ JUNIT = "junit:junit:jar:4.4"
 JYAML = "org.jyaml:jyaml:jar:1.3"
 JAXP_RI= "org.ow2.jonas.osgi:jaxp-ri:jar:5.1.1"
 
-LIFERAY = group("portal-impl", "portal-kernel", "util-java", "portal-service", :under=>"com.liferay", :version=>"5.2.0")
-LIFT = [group("lift-core", "lift-amqp", "lift-facebook", "lift-textile", "lift-webkit", "lift-widgets", "lift-xmpp", :under=>"net.liftweb",:version=>"0.8")]
+LIFERAY = group("portal-impl", "portal-kernel", "util-java", "portal-service",:under=>"com.liferay", :version=>"5.2.0")
+LIFT = [group("lift-core", "lift-amqp", "lift-facebook", "lift-textile","lift-webkit", "lift-widgets", "lift-xmpp",:under=>"net.liftweb",:version=>"0.8")]
 LOG4J = "log4j:log4j:jar:1.2.15"
 
 NEETHI = "org.apache.neethi:neethi:jar:2.0.5"
@@ -258,11 +282,10 @@ WSDL4J = [ "wsdl4j:wsdl4j:jar:1.6.2.intalio2" ]
 XERCES = {:impl => "xerces:xercesImpl:jar:2.9.1" , :parserapi => "xerces:xmlParserAPIs:jar:2.9.0" }
 XOM = "xom:xom:jar:1.1"
 XML_APIS = "xml-apis:xml-apis:jar:1.3.03"
-XMLBEANS = { :xbean=> "xmlbeans:xbean:jar:2.3.0", :xmlbeans=>"org.apache.xmlbeans:xmlbeans:jar:2.4.0", :xmlpublic=>"xmlbeans:xmlpublic:jar:2.3.0", :xbeanpath=>"xmlbeans:xbean_xpath:jar:2.3.0"}
-PXE_XMLBEANS = { :xmlbeans=>"org.apache.xmlbeans:xmlbeans:jar:2.3.0", :xmlpublic=>"xmlbeans:xmlpublic:jar:2.3.0", :xbeanpath=>"xmlbeans:xbean_xpath:jar:2.3.0"}
+XMLBEANS = { :xbean=> "xmlbeans:xbean:jar:2.3.0",:xmlbeans=>"org.apache.xmlbeans:xmlbeans:jar:2.4.0",:xmlpublic=>"xmlbeans:xmlpublic:jar:2.3.0",:xbeanpath=>"xmlbeans:xbean_xpath:jar:2.3.0"}
+PXE_XMLBEANS = { :xmlbeans=>"org.apache.xmlbeans:xmlbeans:jar:2.3.0",:xmlpublic=>"xmlbeans:xmlpublic:jar:2.3.0",:xbeanpath=>"xmlbeans:xbean_xpath:jar:2.3.0"}
 XMLSCHEMA = [ "org.apache.ws.commons.schema:XmlSchema:jar:1.4.3" ]
 XMLUNIT = ["xmlunit:xmlunit:jar:1.1"]
-
 WS_COMMONS_SCHEMA = XMLSCHEMA
 WS_COMMONS          = struct(
   :axiom =>AXIOM,
@@ -307,7 +330,7 @@ JAVAX               = struct(
   :connector        => GERONIMO[:j2ee],
   :management       => GERONIMO[:management],
   :ejb              =>"org.apache.geronimo.specs:geronimo-ejb_2.1_spec:jar:1.1",
-  :javamail         =>"org.apache.geronimo.specs:geronimo-javamail_1.4_spec:jar:1.2",
+  :javamail          =>"org.apache.geronimo.specs:geronimo-javamail_1.4_spec:jar:1.2",
   :jms              => GERONIMO_SPECS[:jms],
   :persistence      => JPA,
   :servlet          =>"org.apache.geronimo.specs:geronimo-servlet_2.4_spec:jar:1.0",
@@ -450,11 +473,10 @@ CAS_LIBS = [
   "person.directory:api:jar:1.1.1",
   "person.directory:impl:jar:1.1.1",
   "quartz:quartz:jar:1.5.2",
-  group("spring-aop","spring-beans","spring-context", "spring-context-support", "spring-core", "spring-jdbc","spring-orm", "spring-tx", "spring-web", "spring-webmvc",:under=>"org.springframework", :version=>"2.5.1"),
-  group("spring-ldap", "spring-ldap-tiger",:under=>"org.springframework", :version=>"1.2.1"),
-  group("spring-binding", "spring-webflow",:under=>"org.springframework", :version=>"1.0.5"), 
-  "xml-security:xmlsec:jar:1.4.0",
-  "taglibs:standard:jar:1.1.2"
+  group("spring-aop","spring-beans","spring-context", "spring-context-support","spring-core", "spring-jdbc","spring-orm", "spring-tx", "spring-web","spring-webmvc",:under=>"org.springframework", :version=>"2.5.1"),
+  group("spring-ldap", "spring-ldap-tiger",:under=>"org.springframework",:version=>"1.2.1"),
+  group("spring-binding", "spring-webflow",:under=>"org.springframework",:version=>"1.0.5"), 
+  "xml-security:xmlsec:jar:1.4.0",  "taglibs:standard:jar:1.1.2"
 ]
 
 SOJO_OPTIONAL = ["net.sf:sojo-optional:jar:0.5.0"]
@@ -499,33 +521,29 @@ TOMCAT_5 = "org.apache.tomcat:apache-tomcat:zip:5.5.33"
 TOMCAT_6 = "org.apache.tomcat:apache-tomcat:zip:6.0.16"
 TOMCAT_7 = "org.apache.tomcat:apache-tomcat:zip:7.0.23"
 TOMCAT_CATALINA = "org.apache.tomcat:catalina:jar:6.0.35"
-TOMCAT_DERBY="com.intalio.bpms.derby:derby-tomcat-resource:jar:1.5"
+TOMCAT_DERBY="com.intalio.bpms.derby:derby-tomcat-resource:jar:#{BPMS_DERBY_TOMCAT_VERSION}"
 TOMCAT_JULI = {
   :adapters => "org.apache.tomcat.extras:tomcat-extras-juli-adapters:jar:7.0.23", 
   :core =>     "org.apache.tomcat:tomcat-juli:jar:7.0.23"
  }
 NET_SF_CLICK = "net.sf.click:click:jar:0.17"
 TRANQL = [ "tranql:tranql-connector:jar:1.1", APACHE_COMMONS[:primitives] ]
-SERVICEMIX          = [
-                        group("servicemix-core",
-                            :under=>"org.apache.servicemix", :version=>"3.3"),
-                        group("servicemix-soap", "servicemix-common", "servicemix-shared", "servicemix-http", "servicemix-eip",
-                            :under=>"org.apache.servicemix", :version=>"2008.01"),
-                        group("servicemix-utils",
-                            :under=>"org.apache.servicemix", :version=>"1.0.0"),
-                        "commons-httpclient:commons-httpclient:jar:3.0", 
+SERVICEMIX  = [  group("servicemix-core", :under=>"org.apache.servicemix", :version=>"3.3"),  group("servicemix-soap", "servicemix-common","servicemix-shared", "servicemix-http", "servicemix-eip",:under=>"org.apache.servicemix",:version=>"2008.01"),
+                 group("servicemix-utils",:under=>"org.apache.servicemix", :version=>"1.0.0"),"commons-httpclient:commons-httpclient:jar:3.0", 
                         "commons-codec:commons-codec:jar:1.2",
                         "org.mortbay.jetty:jetty:jar:6.1.12rc1",
                         "org.mortbay.jetty:jetty-client:jar:6.1.12rc1",
                         "org.mortbay.jetty:jetty-sslengine:jar:6.1.12rc1",
                         "org.mortbay.jetty:servlet-api-2.5:jar:6.1.12rc1",
                         "org.mortbay.jetty:jetty-util:jar:6.1.12rc1",
-                        "org.codehaus.woodstox:wstx-asl:jar:3.2.2",
-                        "org.apache.geronimo.specs:geronimo-activation_1.1_spec:jar:1.0.1",
-                        "org.apache.geronimo.specs:geronimo-annotation_1.0_spec:jar:1.1",
-                        JAVAX[:javamail],
-                        "org.apache.geronimo.specs:geronimo-stax-api_1.0_spec:jar:1.0.1",
-                        "org.apache.geronimo.specs:geronimo-jms_1.1_spec:jar:1.1",
+                        "org.codehaus.woodstox:wstx-asl:jar:3.2.2",                     
+"org.apache.geronimo.specs:geronimo-activation_1.1_spec:jar:1.0.1",
+                       
+"org.apache.geronimo.specs:geronimo-annotation_1.0_spec:jar:1.1", JAVAX[:javamail],
+                       
+"org.apache.geronimo.specs:geronimo-stax-api_1.0_spec:jar:1.0.1",
+                       
+"org.apache.geronimo.specs:geronimo-jms_1.1_spec:jar:1.1",
                         "org.jencks:jencks:jar:2.1",
                         "org.objectweb.howl:howl:jar:1.0.1-1",
                         "org.apache.activemq:activemq-core:jar:4.1.1",
@@ -547,7 +565,9 @@ ACTIVEMQ_AXIS2      = ["org.apache.activemq:activemq-core:jar:5.2.0",
                        "org.apache.activemq:activeio-core:jar:3.1.0",
                         JAVAX[:management]]
 
-JACKSON = ["org.codehaus.jackson:jackson-mapper-asl:jar:1.9.9","org.codehaus.jackson:jackson-core-asl:jar:1.9.9"]
+JACKSON =
+["org.codehaus.jackson:jackson-mapper-asl:jar:1.9.9","org.codehaus.jackson:
+jackson-core-asl:jar:1.9.9"]
 
 # the list of dependencies below has been generated
 ORBEON_LIBS = ["orbeon:activation-1_0_2:jar:3.8.0.201005141856-CE",
@@ -637,10 +657,12 @@ ORBEON_AXIS = [
  "orbeon:axis-wsdl4j:jar:1.2.1-1.5.1"
 ]
 ORBEON_XERCES = [
-  group("xerces-resolver", "xerces-serializer", "xerces-xml-apis", "xerces-xercesImpl", :under => "orbeon" , :version => "2_9_orbeon_20070711")
+  group("xerces-resolver", "xerces-serializer", "xerces-xml-apis",
+"xerces-xercesImpl", :under => "orbeon" , :version => "2_9_orbeon_20070711")
 ]
 ORBEON_CORE = [
-  group("orbeon", "orbeon-xforms-filter", "orbeon-resources-public", "orbeon-resources-private", :under=>"ops", :version=>"3.6.0.200712061930"),
+  group("orbeon", "orbeon-xforms-filter", "orbeon-resources-public",
+"orbeon-resources-private", :under=>"ops", :version=>"3.6.0.200712061930"),
 ]
 ORBEON_CUSTOM = [
   ORBEON_XERCES,
@@ -676,7 +698,8 @@ ORBEON_COMMONS = [
 ]
 
 ORBEON_MSV = [
-  group("msv", "isorelax", "relaxng-datatype","xsdlib", :under => "msv", :version => "20070407")
+  group("msv", "isorelax", "relaxng-datatype","xsdlib", :under => "msv",
+:version => "20070407")
 ]
 
 ORBEON_LIBS_NO_JAXEN = [
@@ -702,14 +725,12 @@ WSI_ORBEON_LIBS = [
 
 ### End of the orbeon gamut ###
 
-
-
 #Intalio modules#
 
-DEPLOY_API = "org.intalio.deploy:deploy-api:jar:#{AXIS2SERVICES_DEPLOY_WS_VERSION}"
-DEPLOY_CLUSTERING  = [ "org.intalio.deploy:deploy-impl:jar:#{AXIS2SERVICES_DEPLOY_WS_VERSION}", "org.springframework:spring:jar:2.5.5" ]
-INTALIO_DEPLOY = group("deploy-api", "deploy-ws-common", "deploy-ws-client", 
-                       :under=>"org.intalio.deploy", :version=>"#{AXIS2SERVICES_DEPLOY_WS_VERSION}")
+DEPLOY_API =
+"org.intalio.deploy:deploy-api:jar:#{AXIS2SERVICES_DEPLOY_WS_VERSION}"
+DEPLOY_CLUSTERING  = ["org.intalio.deploy:deploy-impl:jar:#{AXIS2SERVICES_DEPLOY_WS_VERSION}","org.springframework:spring:jar:2.5.5" ]
+INTALIO_DEPLOY = group("deploy-api", "deploy-ws-common", "deploy-ws-client", :under=>"org.intalio.deploy",:version=>"#{AXIS2SERVICES_DEPLOY_WS_VERSION}")
 
 REGISTRY = "org.intalio.deploy:deploy-registry:jar:#{AXIS2SERVICES_DEPLOY_WS_VERSION}"
 
@@ -726,8 +747,8 @@ ODE_LIBS = {
   :odeaxis2 => "com.intalio.bpms.pxe:ode-axis2:jar:#{ODE_VERSION}",
   :odebpelapi => "com.intalio.bpms.pxe:ode-bpel-api:jar:#{ODE_VERSION}",
   :odebpelapijca => "com.intalio.bpms.pxe:ode-bpel-api-jca:jar:#{ODE_VERSION}",
-  :odebpelcompiler => "com.intalio.bpms.pxe:ode-bpel-compiler:jar:#{ODE_VERSION}",
-  :odebpelconnector => "com.intalio.bpms.pxe:ode-bpel-connector:jar:#{ODE_VERSION}",
+  :odebpelcompiler =>"com.intalio.bpms.pxe:ode-bpel-compiler:jar:#{ODE_VERSION}",
+  :odebpelconnector =>"com.intalio.bpms.pxe:ode-bpel-connector:jar:#{ODE_VERSION}",
   :odebpelepr => "com.intalio.bpms.pxe:ode-bpel-epr:jar:#{ODE_VERSION}",
   :odebpelobj => "com.intalio.bpms.pxe:ode-bpel-obj:jar:#{ODE_VERSION}",
   :odebpelschemas => "com.intalio.bpms.pxe:ode-bpel-schemas:jar:#{ODE_VERSION}",
@@ -739,8 +760,9 @@ ODE_LIBS = {
 
 PXE = ODE_LIBS
 
-CONSOLE = ["com.intalio.bpms.console-common:console-common-webapp:jar:#{BPMS_CONSOLE_VERSION}",
-           "com.intalio.bpms.console-common:console-common-models:jar:#{BPMS_CONSOLE_VERSION}"]
+CONSOLE = ["com.intalio.bpms.console-common:console-common-webapp:jar:#{BPMS_CONSOLE_VERSION}",        
+"com.intalio.bpms.console-common:console-common-models:jar:#{BPMS_CONSOLE_VERSION}"]
+
 TEMPO = {
   :uifw => "org.intalio.tempo:tempo-ui-fw:jar:#{TEMPO_VERSION}",
   :tmscommon => "org.intalio.tempo:tempo-tms-common:jar:#{TEMPO_VERSION}",
@@ -751,4 +773,4 @@ TEMPO = {
 }
 TEMPO_COMMON = TEMPO[:tmscommon]
 
-TMP_CLIENT=["org.intalio.tempo.workflow.tmp:tmp-client:jar:1.0.0.0"]
+TMP_CLIENT=["org.intalio.tempo.workflow.tmp:tmp-client:jar:#{TMP_CLIENT_VERSION}"]
