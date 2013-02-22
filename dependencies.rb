@@ -1,11 +1,7 @@
-BPMS_VERSION = "6.5.1"
-BPMS_BUILD_NUMBER ="6.5.1"
-
 BIRT_VERSION = "2.3.0"
 SPRING_VERSION = "3.1.2.RELEASE"
 
 /#FOR CE VERSION#/
-BPMS_SERVER_NAME = "intalio-bpms"
 COMPONENTS = ["pxe", "console", "monitoring", "bpms-dashboard","ode-validator", "axis2-services", "gi-webapp", "wsi", "ui-fw", "wds", "xforms-manager" ,"tomcat-5","server-common", "tmp-process-handler"]
 DATABASE_COMPONENTS = ["derby","mysql"]
 PXE_COMPONENTS =  ["database-connector", "helloworld-process","jdbc-connector","registry", "tempo-pxe-integration", "workflow-processes"]
@@ -14,7 +10,6 @@ SERVER_NAMES =["tomcat-5"]
 CHOICES = [DATABASE_COMPONENTS, SERVER_NAMES]#Do not change the order of this. Incase an extra parrameter is added add it to the end.
 
 /#FOR EE VERSION#/
-BPMS_SERVER_NAME_EE = "intalio-bpms-ee"
 COMPONENTS_EE = ["pxe-ha", "console", "monitoring", "mobi", "bpms-dashboard","ode-validator", "axis2-services", "webreport", "gi-webapp", "wsi", "ui-fw","fds", "wds", "bre", "xforms-manager" ,"apacheds-webapp", "cas-webapp","server-common", "tmp-process-handler"]
 DATABASE_COMPONENTS_EE = ["oracle","postgres","db2","derby","sqlserver","mysql","sybase","ingres" ]
 PXE_HA_COMPONENTS =  ["database-connector", "helloworld-process","jdbc-connector","registry", "tempo-pxe-integration", "workflow-processes"]
