@@ -23,24 +23,24 @@ TMP_PROCESS_HANDLER_COMPONENT=["security"]
 CHOICE_NAMES = ["database", "server"] #Do not change the order of this. Incase an extra parrameter is added add it to the end.
 
 #The versions of the BPMS COMPONENTS can be set here
-APACHEDS_WEBAPP_VERSION = "6.0.0.40"
-AXIS2SERVICES_DEPLOY_WS_VERSION = "6.3.02"
-BAM_SERVICE_VERSION="6.5.0.001"
+APACHEDS_WEBAPP_VERSION = "6.0.0.41-SNAPSHOT"
+AXIS2SERVICES_DEPLOY_WS_VERSION = "6.3.03-SNAPSHOT"
+BAM_SERVICE_VERSION="6.5.0.002-SNAPSHOT"
 BPMSAJAX_VERSION = "6.0.0.44"
-BPMS_COMMON_VERSION ="1.1.0.003"
-BPMS_CONSOLE_VERSION = "6.5.0.02"
-BPMS_DASHBOARD_VERSION = "1.0.0.04"
-BPMS_DERBY_TOMCAT_VERSION="1.5"
+BPMS_COMMON_VERSION ="1.1.0.004-SNAPSHOT"
+BPMS_CONSOLE_VERSION = "6.5.0.03-SNAPSHOT"
+BPMS_DASHBOARD_VERSION = "1.0.0.05-SNAPSHOT"
 BRE_VERSION = "6.0.0.70"
-CAS_WEBAPP_VERSION= "6.0.0.35"
-TEMPO_VERSION="6.5.0.004"
+CAS_WEBAPP_VERSION= "6.0.0.38-SNAPSHOT"
+BPMS_DERBY_TOMCAT_VERSION="1.6-SNAPSHOT"
+TEMPO_VERSION="6.5.0.005-SNAPSHOT"
 FDS_VERSION = "#{TEMPO_VERSION}"
-GI_WEBAPP_VERSION = "6.5.0.003"
-INTALIO_SECURITY_VERSION = "6.5.02" 
-MOBI_VERSION ="1.0.5"
-MONITORING_VERSION = "1.0.0.03"
+GI_WEBAPP_VERSION = "6.5.0.004-SNAPSHOT"
+INTALIO_SECURITY_VERSION = "6.5.03-SNAPSHOT" 
+MOBI_VERSION ="1.0.6-SNAPSHOT"
+MONITORING_VERSION = "1.0.0.04-SNAPSHOT"
 
-PXE_HA_VERSION="6.5.1"
+PXE_HA_VERSION="6.5.2-SNAPSHOT"
 PXE_HA_DATABASE_CONNECTOR_VERSION = "5.2.0.074"
 PXE_HA_HELLOWORLD_VERSION = "0.3"
 PXE_HA_JDBC_CONNECTOR_VERSION = "5.1.0.009"
@@ -48,7 +48,7 @@ PXE_HA_PROCESSES_VERSION = "6.3.00"
 PXE_HA_REGISTRY_VERSION="1.0.3"
 TEMPO_PXE_HA_INTEGRATION_VERSION = "1.0.6"
 
-PXE_VERSION="6.5.1"
+PXE_VERSION="6.5.2-SNAPSHOT"
 PXE_DATABASE_CONNECTOR_VERSION = "5.2.0.074"
 PXE_HELLOWORLD_VERSION = "0.3"
 PXE_JDBC_CONNECTOR_VERSION = "5.1.0.009"
@@ -58,16 +58,16 @@ ODE_VALIDATOR_VERSION = "1.0.5"
 ODE_VERSION = PXE_VERSION
 
 REGISTRY_VERSION = PXE_HA_VERSION ?PXE_HA_REGISTRY_VERSION : PXE_REGISTRY_VERSION
-TEMPO_PXE_INTEGRATION_VERSION = "1.0.6"
-TEMPO_TAS_SERVICE="6.0.0.54"
-TEMPO_TAS_SERVICE_WITH_ALFRESCO_VERSION="6.0.0.54"
-TMP_CLIENT_VERSION="1.0.0.0"
-TMP_PROCESS_HANDLER_VERSION="1.0.2"
+TEMPO_PXE_INTEGRATION_VERSION = "1.0.8-SNAPSHOT"
+TEMPO_TAS_SERVICE="#{TEMPO_VERSION}"
+TEMPO_TAS_SERVICE_WITH_ALFRESCO_VERSION="#{TEMPO_VERSION}"
+TMP_CLIENT_VERSION="1.0.0.1-SNAPSHOT"
+TMP_PROCESS_HANDLER_VERSION="1.0.3-SNAPSHOT"
 UIFW_VERSION = "#{TEMPO_VERSION}"
 WDS_VERSION = "#{TEMPO_VERSION}"
 WEBREPORT_VERSION="#{BAM_SERVICE_VERSION}"
-WSI_VERSION = "6.0.3.012"
-XFORMS_MANAGER_VERSION = "6.0.0.54"
+WSI_VERSION = "6.0.3.013-SNAPSHOT"
+XFORMS_MANAGER_VERSION = "6.0.0.55-SNAPSHOT"
 
 #INTALIO WAR Artifacts
 
@@ -409,6 +409,8 @@ ALFRESCO = [
   "com.alfresco:acegi-security-0.8.2_patched:jar:2.1.0",
   "com.alfresco:alfresco-repository:jar:2.1.0"
   ]
+
+TAS_ALFRESCO = group("axis", "web-service-client", "wss4j", "saaj", "bcprov-jdk15-137",  "jaxrpc",  "xalan",  "opensaml",  "xmlsec-1.4.1",  "activation",  "wsdl4j",  "mail",  :under => "alfresco", :version => "2.9.0B")
   
 MY_FACES = [
   "org.apache.myfaces.core:myfaces-api:jar:1.1.5",
@@ -559,9 +561,7 @@ ACTIVEMQ_AXIS2      = ["org.apache.activemq:activemq-core:jar:5.2.0",
                        "org.apache.activemq:activeio-core:jar:3.1.0",
                         JAVAX[:management]]
 
-JACKSON =
-["org.codehaus.jackson:jackson-mapper-asl:jar:1.9.9","org.codehaus.jackson:
-jackson-core-asl:jar:1.9.9"]
+JACKSON = ["org.codehaus.jackson:jackson-mapper-asl:jar:1.9.9","org.codehaus.jackson:jackson-core-asl:jar:1.9.9"]
 
 # the list of dependencies below has been generated
 ORBEON_LIBS = ["orbeon:activation-1_0_2:jar:3.8.0.201005141856-CE",
@@ -763,7 +763,8 @@ TEMPO = {
   :tmsservice => "org.intalio.tempo:tempo-tms-service:jar:#{TEMPO_VERSION}",
   :tmsaxis => "org.intalio.tempo:tempo-tms-axis:jar:#{TEMPO_VERSION}",
   :tmsclient => "org.intalio.tempo:tempo-tms-client:jar:#{TEMPO_VERSION}",
-  :daonutbolts => "org.intalio.tempo:tempo-dao-nutsNbolts:jar:#{TEMPO_VERSION}"
+  :daonutbolts => "org.intalio.tempo:tempo-dao-nutsNbolts:jar:#{TEMPO_VERSION}",
+  :tasservice => "org.intalio.tempo:tempo-tas-service:jar:#{TEMPO_VERSION}"
 }
 TEMPO_COMMON = TEMPO[:tmscommon]
 
