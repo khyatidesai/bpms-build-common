@@ -7,7 +7,7 @@ SERVER_NAMES =["tomcat-5"]
 CHOICES = [DATABASE_COMPONENTS, SERVER_NAMES]#Do not change the order of this. Incase an extra parrameter is added add it to the end.
 
 /#FOR EE VERSION#/
-COMPONENTS_EE = ["pxe-ha", "console", "monitoring", "mobi", "bpms-dashboard","ode-validator", "axis2-services", "webreport", "gi-webapp", "wsi", "ui-fw","fds", "wds", "bre", "xforms-manager" ,"apacheds-webapp", "cas-webapp","server-common", "tmp-process-handler"]
+COMPONENTS_EE = ["pxe-ha", "console","collaboration", "monitoring", "mobi", "bpms-dashboard","ode-validator", "axis2-services", "webreport", "gi-webapp", "wsi", "ui-fw","fds", "wds", "bre", "xforms-manager" ,"apacheds-webapp", "cas-webapp","server-common", "tmp-process-handler"]
 DATABASE_COMPONENTS_EE = ["oracle","postgres","db2","derby","sqlserver","mysql","sybase","ingres" ]
 PXE_HA_COMPONENTS =  ["database-connector", "helloworld-process","jdbc-connector","registry", "tempo-pxe-integration", "workflow-processes"]
 AXIS2_COMPONENTS_EE = [ "deploy-ws-service", "tempo-tms-common","tempo-tms-service","tempo-tas-service-with-alfresco","security-ws-service","bam-service"]
@@ -26,6 +26,7 @@ BPMSAJAX = "com.intalio.bpms.ajax:intalioajax:zip:#{BPMSAJAX_VERSION}"
 BPMS_CONSOLE_WAR ="com.intalio.bpms.console:intalio-bpms-console-webapp:war:#{BPMS_CONSOLE_VERSION}"
 BPMS_DASHBOARD_WAR ="com.intalio.bpms.dashboard:bpms-dashboard:war:#{BPMS_DASHBOARD_VERSION}"
 CAS_WEBAPP_WAR = "org.intalio.tempo:cas-webapp:war:#{CAS_WEBAPP_VERSION}"
+COLLABORATION_WAR = "com.intalio.collaboration:collaboration:war:#{COLLABORATION_VERSION}"
 DATABASE_CONNECTOR = "com.intalio.bpms.connectors:com.intalio.bpms.connectors.jdbc.runtime:mar:#{PXE_DATABASE_CONNECTOR_VERSION}"
 FDS_MODULE = "org.intalio.tempo:tempo-fds:mar:#{FDS_VERSION}"
 FDS_WAR = "org.intalio.tempo:tempo-fds:war:#{FDS_VERSION}"
@@ -75,7 +76,7 @@ GERONIMO_JETTY = "org.apache.geronimo:geronimo-jetty6-jee5:zip:2.0.1"
 GSON = ["com.google.code.gson:gson:jar:1.7.1"]
 HSQLDB = "hsqldb:hsqldb:jar:1.8.0.7"
 INGRES_OPENJPA = "com.ingres.jdbc:openjpa-jdbc-ingres:jar:0.1.0"
-INTALIO_LICENSE = "com.intalio.bpms.license:license:jar:1.1"
+INTALIO_LICENSE = "com.intalio.bpms.license:license:jar:#{INTALIO_LICENSE_VERSION}"
 JBI  = group("org.apache.servicemix.specs.jbi-api-1.0", :under=>"org.apache.servicemix.specs", :version=>"1.1.0")
 JBOSS = "jboss:jboss-appserver:zip:4.0.5.GA"
 JBOSS43 ="jboss:jboss-appserver:zip:4.2.3.GA"
@@ -83,13 +84,23 @@ JBOSS7 = "jboss:jboss-appserver:zip:7.1.1.FINAL"
 JCA = [ "javax.resource:connector-api:jar:1.5" ]
 JIBX  = "jibx:jibx-run:jar:1.1-beta3"
 SAXON = group(%w{ saxon saxon-xpath saxon-dom saxon-xqj }, :under => "net.sf.saxon", :version => "9.1.0.8")  
-SPRING_ETC = [  "org.springframework:spring-core:jar:#{SPRING_VERSION}",
+SPRING_ETC = ["org.springframework:spring-core:jar:#{SPRING_VERSION}",
             "org.springframework:spring-webmvc:jar:#{SPRING_VERSION}",
 	    "org.springframework:spring-beans:jar:#{SPRING_VERSION}",
             "org.springframework:spring-context:jar:#{SPRING_VERSION}",
-            "org.springframework:spring-asm:jar:#{SPRING_VERSION}",
             "org.springframework:spring-web:jar:#{SPRING_VERSION}",
-            "org.springframework:spring-expression:jar:#{SPRING_VERSION}"]
+            "org.springframework:spring-expression:jar:#{SPRING_VERSION}",
+            "org.springframework:spring-orm:jar:#{SPRING_VERSION}",
+            "org.springframework:spring-tx:jar:#{SPRING_VERSION}",
+            "org.springframework:spring-jdbc:jar:#{SPRING_VERSION}",
+            "org.springframework:spring-test:jar:#{SPRING_VERSION}"
+             ]
+SPRING_AOP = ["aopalliance:aopalliance:jar:1.0",
+               "org.springframework:spring-aop:jar:#{SPRING_VERSION}"]
+
+SPRING_ETC_SECURITY = [  "org.springframework:spring-security-config:jar:#{SPRING_VERSION}",
+				"org.springframework:spring-security-core:jar:#{SPRING_VERSION}",
+				"org.springframework:spring-security-web:jar:#{SPRING_VERSION}"]
 STAX_API_INTALIO = "stax:stax-api:jar:1.0.1-intalio"
 XOM = "xom:xom:jar:1.1"
 XML_APIS = "xml-apis:xml-apis:jar:1.3.03"
@@ -116,6 +127,7 @@ AXIS2_MODULES = struct(
            BACKPORT]
 )
 TAS_ALFRESCO = group("axis", "web-service-client", "wss4j", "saaj", "bcprov-jdk15-137",  "jaxrpc",  "xalan",  "opensaml",  "xmlsec-1.4.1",  "activation",  "wsdl4j",  "mail",  :under => "alfresco", :version => "2.9.0B")
+JACKSON = ["org.codehaus.jackson:jackson-mapper-asl:jar:1.9.9","org.codehaus.jackson:jackson-core-asl:jar:1.9.9"]
 HIBERNATE_VALIDATOR = "org.hibernate:hibernate-validator:jar:3.0.0.ga"
 HIBERNATE = [
   "org.hibernate:hibernate:jar:3.2.4.sp1",
@@ -137,10 +149,41 @@ PXE_HIBERNATE = ["javassist:javassist:jar:3.12.0.GA",
 "net.sf.ehcache:ehcache:jar:1.2.3",
 "org.hibernate:hibernate-validator:jar:3.1.0.GA" 
 ]
+
+HIBERNATE_3_X = ["javassist:javassist:jar:3.12.0.GA", 
+"org.hibernate:hibernate-commons-annotations:jar:3.2.0.Final", 
+"org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final", 
+"org.hibernate:hibernate-core:jar:3.6.9.Final", 
+"asm:asm:jar:1.5.3", 
+"org.hibernate:hibernate-entitymanager:jar:3.6.9.Final",
+#"org.hibernate:hibernate-annotations:jar:3.5.6-Final", 
+"antlr:antlr:jar:2.7.6",
+"cglib:cglib:jar:2.1_3", 
+"net.sf.ehcache:ehcache:jar:1.2.3",
+"org.hibernate:hibernate-validator:jar:3.1.0.GA" 
+]
+
+# HIBERNATE_4_X = ["org.hibernate:hibernate-core:jar:4.1.1.Final",
+#                  "org.hibernate:hibernate-entitymanager:jar:4.1.1.Final",
+# 		 #"org.hibernate:hibernate-annotations:jar:3.5.6-Final",
+#                  "javassist:javassist:jar:3.12.0.GA",
+# 		 "org.hibernate:hibernate-commons-annotations:jar:4.0.1.Final",
+#                  "antlr:antlr:jar:2.7.7",
+# 		 #"org.hibernate:hibernate-validator:jar:3.1.0.GA",
+#                  "org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final",
+#                  "org.jboss.logging:jboss-logging:jar:3.1.0.GA",
+#                  JACKSON,"org.apache.lucene:lucene-core:jar:4.2.0", 
+#                  "org.apache.avro:avro:jar:1.7.4", 
+#                  "com.thoughtworks.paranamer:paranamer:jar:2.5.2", 
+#                  "org.xerial.snappy:snappy-java:jar:1.0.4.1"]
+
+
+
 GUAVA_CACHE="com.google.guava:guava:jar:13.0"
 MYSQL_DRIVER = "mysql:mysql-connector:jar:5.1.21"
 SQLSERVER_DRIVER = "microsoft:sqljdbc:jar:2005"
 INGRES_DRIVER = "com.ingres.jdbc:iijdbc:jar:3.6.1"
+
 ORACLE_DRIVER = "oracle.jdbc:oracle-jdbc:jar:10g"
 JTDS_DRIVER="net.sourceforge.jtds:jtds:jar:1.2.4"
 SYBASE_DRIVER = "sybase:jconnect:jar:4.3"
@@ -190,9 +233,6 @@ XBEAN               = [
 ACTIVEMQ_AXIS2      = ["org.apache.activemq:activemq-core:jar:5.2.0",
                        "org.apache.activemq:activeio-core:jar:3.1.0",
                         JAVAX[:management]]
-
-JACKSON = ["org.codehaus.jackson:jackson-mapper-asl:jar:1.9.9","org.codehaus.jackson:jackson-core-asl:jar:1.9.9"]
-
 
 ORBEON_AXIS = [
  "orbeon:axis-orbeon:jar:1.2.1",
@@ -305,3 +345,4 @@ TEMPO = {
 TEMPO_COMMON = TEMPO[:tmscommon]
 
 TMP_CLIENT=["org.intalio.tempo.workflow.tmp:tmp-client:jar:#{TMP_CLIENT_VERSION}"]
+JSON_JAVA="org.json:json:jar:20090211"
