@@ -110,7 +110,7 @@ WS_COMMONS          = struct(
   :neethi => NEETHI,
   :xml_schema => XMLSCHEMA
 )
-WSDL4J_INTALIO2 = [ "wsdl4j:wsdl4j:jar:1.6.2.intalio2" ]
+WSDL4J_INTALIO2 = [ "wsdl4j:wsdl4j:jar:1.6.3" ]
 AXIS2_MODULES = struct(
  :mods => ["org.apache.rampart:rampart:mar:1.4",
            "org.apache.rampart:rahas:mar:1.4",

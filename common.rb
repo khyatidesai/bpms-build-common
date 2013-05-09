@@ -117,7 +117,7 @@ TAGLIBS = [ "taglibs:standard:jar:1.1.2" ]
 URLREWRITE = "org.tuckey:urlrewrite:jar:3.1.0"
 
 WOODSTOX = [ "woodstox:wstx-asl:jar:3.2.4" ]
-WSDL4J = [ "wsdl4j:wsdl4j:jar:1.6.2" ]
+WSDL4J = [ "wsdl4j:wsdl4j:jar:1.6.3" ]
 XMLSCHEMA = [ "org.apache.ws.commons.schema:XmlSchema:jar:1.4.3" ]
 WS_COMMONS_SCHEMA = XMLSCHEMA
 XERCES = {:impl => "xerces:xercesImpl:jar:2.9.1" , :parserapi => "xerces:xmlParserAPIs:jar:2.9.0" }
