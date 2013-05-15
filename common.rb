@@ -123,6 +123,8 @@ WS_COMMONS_SCHEMA = XMLSCHEMA
 XERCES = {:impl => "xerces:xercesImpl:jar:2.9.1" , :parserapi => "xerces:xmlParserAPIs:jar:2.9.0" }
 XMLBEANS = { :xbean=> "xmlbeans:xbean:jar:2.3.0",:xmlbeans=>"org.apache.xmlbeans:xmlbeans:jar:2.4.0",:xmlpublic=>"xmlbeans:xmlpublic:jar:2.3.0",:xbeanpath=>"xmlbeans:xbean_xpath:jar:2.3.0"}
 XMLUNIT = ["xmlunit:xmlunit:jar:1.1"]
+JSON_LIB = "net.sf.json-lib:json-lib:jar:2.2.1-jdk15"
+EZMORPH = "net.sf.ezmorph:ezmorph:jar:1.0.4"
 
 PLUTO_CONTAINER = "org.apache.pluto:pluto-container:jar:1.1.4"
 PLUTO_TAGLIB = "org.apache.pluto:pluto-taglib:jar:1.1.4"
@@ -175,12 +177,12 @@ APACHE_ABDERA = [
   APACHE_COMMONS[:httpclient],
   APACHE_COMMONS[:lang],
   APACHE_COMMONS[:logging],
-  "net.sf.ezmorph:ezmorph:jar:1.0.4",
+  EZMORPH,
   STAX_API,
   JAVAMAIL,
   "org.htmlparser:htmlparser:jar:1.0.5",
   JAXEN,
-  "net.sf.json-lib:json-lib:jar:2.2.1-jdk15",
+  JSON_LIB,
   WOODSTOX,
   XALAN,
   "xml-security:xmlsec:jar:1.3.0",
@@ -188,7 +190,6 @@ APACHE_ABDERA = [
 ]
 
 HTTPCORE = "org.apache.httpcomponents:httpcore:jar:4.0"
-
 AXIS2 = {
   :transporthttp => "org.apache.axis2:axis2-transport-http:jar:1.5.5",
   :transportlocal => "org.apache.axis2:axis2-transport-local:jar:1.5.5",
