@@ -197,6 +197,7 @@ TOMCAT_JULI = {
  }
 NET_SF_CLICK = "net.sf.click:click:jar:0.17"
 TRANQL = [ "tranql:tranql-connector:jar:1.1", APACHE_COMMONS[:primitives] ]
+COMMONS_BEANUTILS = "commons-beanutils:commons-beanutils:jar:1.7.0"
 SERVICEMIX  = [  group("servicemix-core", :under=>"org.apache.servicemix", :version=>"3.3"),  group("servicemix-soap", "servicemix-common","servicemix-shared", "servicemix-http", "servicemix-eip",:under=>"org.apache.servicemix",:version=>"2008.01"),
                  group("servicemix-utils",:under=>"org.apache.servicemix", :version=>"1.0.0"),"commons-httpclient:commons-httpclient:jar:3.0", 
                         "commons-codec:commons-codec:jar:1.2",
@@ -217,7 +218,7 @@ SERVICEMIX  = [  group("servicemix-core", :under=>"org.apache.servicemix", :vers
                         "org.objectweb.howl:howl:jar:1.0.1-1",
                         "org.apache.activemq:activemq-core:jar:4.1.1",
                         "org.apache.activemq:activemq-ra:jar:4.1.1",
-                        "commons-beanutils:commons-beanutils:jar:1.7.0",
+                        COMMONS_BEANUTILS,
                         "tranql:tranql-connector-derby-common:jar:1.1"
                         ]
 XSTREAM             = "xstream:xstream:jar:1.2"
