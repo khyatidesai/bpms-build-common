@@ -1,22 +1,23 @@
+/#Common Components or Variables#/
+BRE_COMPONENTS = [["com.intalio.bre-dtdeployment",BRE_VERSION]]
+TMP_PROCESS_HANDLER_COMPONENT=[["security", INTALIO_SECURITY_VERSION]]
+
 /#FOR CE VERSION#/
-COMPONENTS = ["pxe", "console", "monitoring", "bpms-dashboard","ode-validator", "axis2-services", "gi-webapp", "wsi", "ui-fw", "wds", "xforms-manager" ,"tomcat-5","server-common", "tmp-process-handler"]
-DATABASE_COMPONENTS = ["derby","mysql"]
-PXE_COMPONENTS =  ["database-connector", "helloworld-process","jdbc-connector","registry", "tempo-pxe-integration", "workflow-processes"]
-AXIS2_COMPONENTS = [ "deploy-ws-service", "tempo-tms-service","tempo-tas-service","security-ws-service"]
-SERVER_NAMES =["tomcat-5"]
+PXE_COMPONENTS =  [["database-connector",PXE_DATABASE_CONNECTOR_VERSION], ["helloworld-process",PXE_HELLOWORLD_VERSION],["jdbc-connector", PXE_JDBC_CONNECTOR_VERSION],["registry",PXE_REGISTRY_VERSION], ["tempo-pxe-integration",TEMPO_PXE_INTEGRATION_VERSION], ["workflow-processes",PXE_PROCESSES_VERSION]]
+AXIS2_COMPONENTS = [["deploy-ws-service",AXIS2SERVICES_DEPLOY_WS_VERSION],["tempo-tms-service", TEMPO_VERSION],["tempo-tas-service",TEMPO_VERSION],["security-ws-service", INTALIO_SECURITY_VERSION]]
+COMPONENTS = [["pxe",PXE_VERSION,PXE_COMPONENTS], ["console",BPMS_CONSOLE_VERSION,""], ["monitoring",MONITORING_VERSION,""], ["bpms-dashboard",BPMS_DASHBOARD_VERSION,""],["ode-validator", ODE_VALIDATOR_VERSION,""], ["axis2-services",AXIS2SERVICES_DEPLOY_WS_VERSION,AXIS2_COMPONENTS], ["gi-webapp",GI_WEBAPP_VERSION,""], ["wsi",WSI_VERSION,""], ["ui-fw",UIFW_VERSION,""], ["wds", WDS_VERSION,""], ["xforms-manager",XFORMS_MANAGER_VERSION, ""],["tomcat-5",TOMCAT_5_VERSION,""],["server-common","",""],["tmp-process-handler", TMP_PROCESS_HANDLER_VERSION,TMP_PROCESS_HANDLER_COMPONENT]]
+DATABASE_COMPONENTS = [["derby",DERBY_VER],["mysql",MYSQL_VERSION]]
+SERVER_NAMES =[["tomcat-5",TOMCAT_5_VERSION]]
 CHOICES = [DATABASE_COMPONENTS, SERVER_NAMES]#Do not change the order of this. Incase an extra parrameter is added add it to the end.
 
 /#FOR EE VERSION#/
-COMPONENTS_EE = ["pxe-ha", "console","collaboration", "monitoring", "mobi", "bpms-dashboard","ode-validator", "axis2-services", "webreport", "gi-webapp", "wsi", "ui-fw","fds", "wds", "bre", "xforms-manager" ,"apacheds-webapp", "cas-webapp","server-common", "tmp-process-handler"]
-DATABASE_COMPONENTS_EE = ["oracle","postgres","db2","derby","sqlserver","mysql","sybase","ingres" ]
-PXE_HA_COMPONENTS =  ["database-connector", "helloworld-process","jdbc-connector","registry", "tempo-pxe-integration", "workflow-processes"]
-AXIS2_COMPONENTS_EE = [ "deploy-ws-service", "tempo-tms-common","tempo-tms-service","tempo-tas-service-with-alfresco","security-ws-service","bam-service"]
-SERVER_NAMES_EE =["geronimo","tomcat-5","tomcat-6","tomcat-7","jboss","jboss43","jboss43ear","jboss61ear","jboss7","weblogic9","weblogic10"]
+PXE_HA_COMPONENTS =  [["database-connector",PXE_HA_DATABASE_CONNECTOR_VERSION],["helloworld-process",PXE_HA_HELLOWORLD_VERSION],["jdbc-connector", PXE_HA_JDBC_CONNECTOR_VERSION],["registry",PXE_HA_REGISTRY_VERSION],["tempo-pxe-integration",TEMPO_PXE_HA_INTEGRATION_VERSION], ["workflow-processes", PXE_HA_PROCESSES_VERSION]]
+AXIS2_COMPONENTS_EE = [["deploy-ws-service",AXIS2SERVICES_DEPLOY_WS_VERSION], ["tempo-tms-common", TEMPO_VERSION],["tempo-tms-service", TEMPO_VERSION],["tempo-tas-service-with-alfresco", TEMPO_TAS_SERVICE_WITH_ALFRESCO_VERSION], ["security-ws-service", INTALIO_SECURITY_VERSION],["bam-service", BAM_SERVICE_VERSION]]
+COMPONENTS_EE = [["pxe-ha", PXE_HA_VERSION,PXE_HA_COMPONENTS], ["console",BPMS_CONSOLE_VERSION,""],["collaboration",COLLABORATION_VERSION,""], ["monitoring", MONITORING_VERSION, ""], ["mobi", MOBI_VERSION, ""], ["bpms-dashboard",BPMS_DASHBOARD_VERSION, ""],["ode-validator", ODE_VALIDATOR_VERSION,""], ["axis2-services", AXIS2SERVICES_DEPLOY_WS_VERSION, AXIS2_COMPONENTS_EE], ["webreport", WEBREPORT_VERSION,""],["gi-webapp", GI_WEBAPP_VERSION,""],["wsi", WSI_VERSION,""],["ui-fw", UIFW_VERSION, ""],["fds", FDS_VERSION, ""],["wds", WDS_VERSION, ""], ["bre", "", BRE_COMPONENTS], ["xforms-manager", XFORMS_MANAGER_VERSION, ""] ,["apacheds-webapp", APACHEDS_WEBAPP_VERSION,""],["cas-webapp", CAS_WEBAPP_VERSION, ""],["server-common", "", ""],["tmp-process-handler", TMP_PROCESS_HANDLER_VERSION, TMP_PROCESS_HANDLER_COMPONENT]]
+DATABASE_COMPONENTS_EE = [["oracle",ORACLE_VERSION],["postgres", POSTGRES_VERSION],["db2", DB2_VERSION],["derby", DERBY_VER],["sqlserver", SQLSERVER_VERSION],["mysql", MYSQL_VERSION],["sybase", SYBASE_VERSION],["ingres", INGRES_VERSION]]
+SERVER_NAMES_EE =[["geronimo",""],["tomcat-5", TOMCAT_5_VERSION],["tomcat-6",TOMCAT_6_VERSION], ["tomcat-7",TOMCAT_7_VERSION],["jboss",JBOSS_VERSION],["jboss43",JBOSS43_VERSION],["jboss43ear",""],["jboss61ear",""],["jboss7",JBOSS7_VERSION],["weblogic9",""],["weblogic10",""]]
 CHOICES_EE = [DATABASE_COMPONENTS_EE, SERVER_NAMES_EE]#Do not change the order of this. Incase an extra parrameter is added add it to the end.
 
-/#Common Components or Variables#/
-BRE_COMPONENTS = ["com.intalio.bre-dtdeployment"]
-TMP_PROCESS_HANDLER_COMPONENT=["security"]
 CHOICE_NAMES = ["database", "server"] #Do not change the order of this. Incase an extra parrameter is added add it to the end.
 
 #INTALIO WAR Artifacts
@@ -69,7 +70,7 @@ BTM = {
   :tomcatlifecycle => "org.codehaus.btm:btm-tomcat55-lifecycle:jar:2.1.3" 
 }
 CGLIB_NODEP="cglib:cglib-nodep:jar:2.2.2"
-DB2_DRIVER = "db2:jcc:jar:9.5"
+DB2_DRIVER = "db2:jcc:jar:#{DB2_VERSION}"
 EASYMOCK = "easymock:easymock:jar:2.0"
 EMAIL_CONNECTOR = "com.intalio.bpms.connectors:com.intalio.bpms.connectors.email:aar:1.9"
 GERONIMO_JETTY = "org.apache.geronimo:geronimo-jetty6-jee5:zip:2.0.1"
@@ -78,9 +79,9 @@ HSQLDB = "hsqldb:hsqldb:jar:1.8.0.7"
 INGRES_OPENJPA = "com.ingres.jdbc:openjpa-jdbc-ingres:jar:0.1.0"
 INTALIO_LICENSE = "com.intalio.bpms.license:license:jar:#{INTALIO_LICENSE_VERSION}"
 JBI  = group("org.apache.servicemix.specs.jbi-api-1.0", :under=>"org.apache.servicemix.specs", :version=>"1.1.0")
-JBOSS = "jboss:jboss-appserver:zip:4.0.5.GA"
-JBOSS43 ="jboss:jboss-appserver:zip:4.2.3.GA"
-JBOSS7 = "jboss:jboss-appserver:zip:7.1.1.FINAL"
+JBOSS = "jboss:jboss-appserver:zip:#{JBOSS_VERSION}"
+JBOSS43 ="jboss:jboss-appserver:zip:#{JBOSS43_VERSION}"
+JBOSS7 = "jboss:jboss-appserver:zip:#{JBOSS7_VERSION}"
 JCA = [ "javax.resource:connector-api:jar:1.5" ]
 JIBX  = "jibx:jibx-run:jar:1.1-beta3"
 SAXON = group(%w{ saxon saxon-xpath saxon-dom saxon-xqj }, :under => "net.sf.saxon", :version => "9.1.0.8")  
@@ -137,92 +138,72 @@ HIBERNATE = [
   "cglib:cglib:jar:2.1_3",
   "asm:asm:jar:1.5.3"]
 
-PXE_HIBERNATE = ["javassist:javassist:jar:3.12.0.GA", 
-"org.hibernate:hibernate-commons-annotations:jar:3.2.0.Final", 
-"org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final", 
-"org.hibernate:hibernate-core:jar:3.6.9.Final", 
-"asm:asm:jar:1.5.3", 
-"org.hibernate:hibernate-entitymanager:jar:3.6.9.Final",
-#"org.hibernate:hibernate-annotations:jar:3.5.6-Final", 
-"antlr:antlr:jar:2.7.6",
-"cglib:cglib:jar:2.1_3", 
-"net.sf.ehcache:ehcache:jar:1.2.3",
-"org.hibernate:hibernate-validator:jar:3.1.0.GA" 
-]
+PXE_HIBERNATE = ["javassist:javassist:jar:3.12.0.GA",
+                 "org.hibernate:hibernate-commons-annotations:jar:3.2.0.Final",
+                 "org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final",
+                 "org.hibernate:hibernate-core:jar:3.6.9.Final",
+                 "asm:asm:jar:1.5.3",
+                 "org.hibernate:hibernate-entitymanager:jar:3.6.9.Final",
+                 #"org.hibernate:hibernate-annotations:jar:3.5.6-Final",
+                 "antlr:antlr:jar:2.7.6",
+                 "cglib:cglib:jar:2.1_3",
+                 "net.sf.ehcache:ehcache:jar:1.2.3",
+                 "org.hibernate:hibernate-validator:jar:3.1.0.GA"]
 
-HIBERNATE_3_X = ["javassist:javassist:jar:3.12.0.GA", 
-"org.hibernate:hibernate-commons-annotations:jar:3.2.0.Final", 
-"org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final", 
-"org.hibernate:hibernate-core:jar:3.6.9.Final", 
-"asm:asm:jar:1.5.3", 
-"org.hibernate:hibernate-entitymanager:jar:3.6.9.Final",
-#"org.hibernate:hibernate-annotations:jar:3.5.6-Final", 
-"antlr:antlr:jar:2.7.6",
-"cglib:cglib:jar:2.1_3", 
-"net.sf.ehcache:ehcache:jar:1.2.3",
-"org.hibernate:hibernate-validator:jar:3.1.0.GA" 
-]
-
-# HIBERNATE_4_X = ["org.hibernate:hibernate-core:jar:4.1.1.Final",
-#                  "org.hibernate:hibernate-entitymanager:jar:4.1.1.Final",
-# 		 #"org.hibernate:hibernate-annotations:jar:3.5.6-Final",
-#                  "javassist:javassist:jar:3.12.0.GA",
-# 		 "org.hibernate:hibernate-commons-annotations:jar:4.0.1.Final",
-#                  "antlr:antlr:jar:2.7.7",
-# 		 #"org.hibernate:hibernate-validator:jar:3.1.0.GA",
-#                  "org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final",
-#                  "org.jboss.logging:jboss-logging:jar:3.1.0.GA",
-#                  JACKSON,"org.apache.lucene:lucene-core:jar:4.2.0", 
-#                  "org.apache.avro:avro:jar:1.7.4", 
-#                  "com.thoughtworks.paranamer:paranamer:jar:2.5.2", 
-#                  "org.xerial.snappy:snappy-java:jar:1.0.4.1"]
-
-
+HIBERNATE_3_X = ["javassist:javassist:jar:3.12.0.GA",
+                 "org.hibernate:hibernate-commons-annotations:jar:3.2.0.Final",
+                 "org.hibernate.javax.persistence:hibernate-jpa-2.0-api:jar:1.0.1.Final",
+                 "org.hibernate:hibernate-core:jar:3.6.9.Final", "asm:asm:jar:1.5.3",
+                 "org.hibernate:hibernate-entitymanager:jar:3.6.9.Final",
+                 #"org.hibernate:hibernate-annotations:jar:3.5.6-Final",
+                 "antlr:antlr:jar:2.7.6",
+                 "cglib:cglib:jar:2.1_3",
+                 "net.sf.ehcache:ehcache:jar:1.2.3",
+                 "org.hibernate:hibernate-validator:jar:3.1.0.GA"]
 
 GUAVA_CACHE="com.google.guava:guava:jar:13.0"
-MYSQL_DRIVER = "mysql:mysql-connector:jar:5.1.21"
-SQLSERVER_DRIVER = "microsoft:sqljdbc:jar:2005"
-INGRES_DRIVER = "com.ingres.jdbc:iijdbc:jar:3.6.1"
-
-ORACLE_DRIVER = "oracle.jdbc:oracle-jdbc:jar:10g"
+MYSQL_DRIVER = "mysql:mysql-connector:jar:#{MYSQL_VERSION}"
+SQLSERVER_DRIVER = "microsoft:sqljdbc:jar:#{SQLSERVER_VERSION}"
+INGRES_DRIVER = "com.ingres.jdbc:iijdbc:jar:#{INGRES_VERSION}"
+SYBASE_DRIVER = "sybase:jconnect:jar:#{SYBASE_VERSION}"
+ORACLE_DRIVER = "oracle.jdbc:oracle-jdbc:jar:#{ORACLE_VERSION}"
 JTDS_DRIVER="net.sourceforge.jtds:jtds:jar:1.2.4"
-SYBASE_DRIVER = "sybase:jconnect:jar:4.3"
-TOMCAT_5 = "org.apache.tomcat:apache-tomcat:zip:5.5.33"
-TOMCAT_6 = "org.apache.tomcat:apache-tomcat:zip:6.0.16"
-TOMCAT_7 = "org.apache.tomcat:apache-tomcat:zip:7.0.23"
-TOMCAT_DERBY="com.intalio.bpms.derby:derby-tomcat-resource:jar:#{BPMS_DERBY_TOMCAT_VERSION}"
-TOMCAT_JULI = {
-  :adapters => "org.apache.tomcat.extras:tomcat-extras-juli-adapters:jar:7.0.23", 
-  :core =>     "org.apache.tomcat:tomcat-juli:jar:7.0.23"
- }
+
+TOMCAT_5 = "org.apache.tomcat:apache-tomcat:zip:#{TOMCAT_5_VERSION}"
+TOMCAT_6 = "org.apache.tomcat:apache-tomcat:zip:#{TOMCAT_6_VERSION}"
+TOMCAT_7 = "org.apache.tomcat:apache-tomcat:zip:#{TOMCAT_7_VERSION}"
+TOMCAT_DERBY="com.intalio.bpms.derby:derby-tomcat-resource:jar:#{
+BPMS_DERBY_TOMCAT_VERSION}"
+TOMCAT_JULI = { 
+  :adapters => "org.apache.tomcat.extras:tomcat-extras-juli-adapters:jar:#{TOMCAT_7_VERSION}", 
+  :core =>     "org.apache.tomcat:tomcat-juli:jar:#{TOMCAT_7_VERSION}" }
 NET_SF_CLICK = "net.sf.click:click:jar:0.17"
 TRANQL = [ "tranql:tranql-connector:jar:1.1", APACHE_COMMONS[:primitives] ]
-SERVICEMIX  = [  group("servicemix-core", :under=>"org.apache.servicemix", :version=>"3.3"),  group("servicemix-soap", "servicemix-common","servicemix-shared", "servicemix-http", "servicemix-eip",:under=>"org.apache.servicemix",:version=>"2008.01"),
-                 group("servicemix-utils",:under=>"org.apache.servicemix", :version=>"1.0.0"),"commons-httpclient:commons-httpclient:jar:3.0", 
-                        "commons-codec:commons-codec:jar:1.2",
-                        "org.mortbay.jetty:jetty:jar:6.1.12rc1",
-                        "org.mortbay.jetty:jetty-client:jar:6.1.12rc1",
-                        "org.mortbay.jetty:jetty-sslengine:jar:6.1.12rc1",
-                        "org.mortbay.jetty:servlet-api-2.5:jar:6.1.12rc1",
-                        "org.mortbay.jetty:jetty-util:jar:6.1.12rc1",
-                        "org.codehaus.woodstox:wstx-asl:jar:3.2.2",                     
-"org.apache.geronimo.specs:geronimo-activation_1.1_spec:jar:1.0.1",
-                       
-"org.apache.geronimo.specs:geronimo-annotation_1.0_spec:jar:1.1", JAVAX[:javamail],
-                       
-"org.apache.geronimo.specs:geronimo-stax-api_1.0_spec:jar:1.0.1",
-                       
-"org.apache.geronimo.specs:geronimo-jms_1.1_spec:jar:1.1",
-                        "org.jencks:jencks:jar:2.1",
-                        "org.objectweb.howl:howl:jar:1.0.1-1",
-                        "org.apache.activemq:activemq-core:jar:4.1.1",
-                        "org.apache.activemq:activemq-ra:jar:4.1.1",
-                        "commons-beanutils:commons-beanutils:jar:1.7.0",
-                        "tranql:tranql-connector-derby-common:jar:1.1"
-                        ]
-XSTREAM             = "xstream:xstream:jar:1.2"
+SERVICEMIX  = [  group("servicemix-core", :under=>"org.apache.servicemix", :version=>"3.3"),  
+                 group("servicemix-soap", "servicemix-common","servicemix-shared", "servicemix-http", "servicemix-eip",:under=>"org.apache.servicemix",:version=>"2008.01"), 
+                 group("servicemix-utils",:under=>"org.apache.servicemix", :version=>"1.0.0"),
+                 "commons-httpclient:commons-httpclient:jar:3.0", 
+                 "commons-codec:commons-codec:jar:1.2", 
+                 "org.mortbay.jetty:jetty:jar:6.1.12rc1", 
+                 "org.mortbay.jetty:jetty-client:jar:6.1.12rc1", 
+                 "org.mortbay.jetty:jetty-sslengine:jar:6.1.12rc1", 
+                 "org.mortbay.jetty:servlet-api-2.5:jar:6.1.12rc1", 
+                 "org.mortbay.jetty:jetty-util:jar:6.1.12rc1", 
+                 "org.codehaus.woodstox:wstx-asl:jar:3.2.2", 
+                 "org.apache.geronimo.specs:geronimo-activation_1.1_spec:jar:1.0.1", 
+                 "org.apache.geronimo.specs:geronimo-annotation_1.0_spec:jar:1.1", 
+                 JAVAX[:javamail], 
+                 "org.apache.geronimo.specs:geronimo-stax-api_1.0_spec:jar:1.0.1", 
+                 "org.apache.geronimo.specs:geronimo-jms_1.1_spec:jar:1.1", 
+                 "org.jencks:jencks:jar:2.1", 
+                 "org.objectweb.howl:howl:jar:1.0.1-1", 
+                 "org.apache.activemq:activemq-core:jar:4.1.1", 
+                 "org.apache.activemq:activemq-ra:jar:4.1.1", 
+                 "commons-beanutils:commons-beanutils:jar:1.7.0", 
+                 "tranql:tranql-connector-derby-common:jar:1.1" ]
+XSTREAM = "xstream:xstream:jar:1.2"
 
-XBEAN               = [
+XBEAN  = [
   "org.apache.xbean:xbean-kernel:jar:3.3",
   "org.apache.xbean:xbean-server:jar:3.3",
   "org.apache.xbean:xbean-spring:jar:3.4.3",
@@ -311,7 +292,7 @@ WSI_ORBEON_LIBS = [
 
 #Intalio modules#
 
-DEPLOY_CLUSTERING  = ["org.intalio.deploy:deploy-impl:jar:#{AXIS2SERVICES_DEPLOY_WS_VERSION}","org.springframework:spring:jar:2.5.5" ]
+DEPLOY_CLUSTERING  = ["org.intalio.deploy:deploy-impl:jar:#{AXIS2SERVICES_DEPLOY_WS_VERSION}","org. springframework:spring:jar:2.5.5" ]
 INTALIO_DEPLOY = group("deploy-api", "deploy-ws-common", "deploy-ws-client", :under=>"org.intalio.deploy",:version=>"#{AXIS2SERVICES_DEPLOY_WS_VERSION}")
 ODE_LIBS = {
   :odeaxis2 => "com.intalio.bpms.pxe:ode-axis2:jar:#{ODE_VERSION}",
@@ -330,8 +311,8 @@ ODE_LIBS = {
 
 PXE = ODE_LIBS
 
-CONSOLE = ["com.intalio.bpms.console-common:console-common-webapp:jar:#{BPMS_CONSOLE_VERSION}",        
-"com.intalio.bpms.console-common:console-common-models:jar:#{BPMS_CONSOLE_VERSION}"]
+CONSOLE = ["com.intalio.bpms.console-common:console-common-webapp:jar:#{BPMS_CONSOLE_VERSION}",
+           "com.intalio.bpms.console-common:console-common-models:jar:#{BPMS_CONSOLE_VERSION}"]
 
 TEMPO = {
   :uifw => "org.intalio.tempo:tempo-ui-fw:jar:#{TEMPO_VERSION}",

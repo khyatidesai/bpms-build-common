@@ -2,6 +2,21 @@ BIRT_VERSION = "2.3.0"
 SPRING_VERSION = "3.2.2.RELEASE"
 
 DERBY_VER = "10.8.2.2" # Note=> If we change derby version then for jboss 7 we also need to change module.xml file located parrallel to this fileupload
+MYSQL_VERSION="5.1.21"
+ORACLE_VERSION="10g"
+DB2_VERSION="9.5"
+POSTGRES_VERSION="9.1-901.jdbc4"
+SQLSERVER_VERSION = "2005"
+INGRES_VERSION = "3.6.1"
+SYBASE_VERSION = "4.3"
+
+TOMCAT_5_VERSION = "5.5.33"
+TOMCAT_6_VERSION = "6.0.16"
+TOMCAT_7_VERSION = "7.0.23"
+JBOSS_VERSION = "4.0.5.GA"
+JBOSS43_VERSION ="4.2.3.GA"
+JBOSS7_VERSION = "7.1.1.FINAL"
+
 
 #The versions of the BPMS COMPONENTS can be set here
 APACHEDS_WEBAPP_VERSION = "6.0.0.41-SNAPSHOT"

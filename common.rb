@@ -33,9 +33,9 @@ CASTOR = "castor:castor:jar:1.0"
 CAS_CLIENT = "cas:casclient:jar:2.1.1"
 CSV = "org.ostermiller:utils:jar:1.07.00"
 DB_CONNECTOR = {
-  :db2 => "com.ibm.db2.jcc:jcc4:jar:9.2",
-  :mysql => "mysql:mysql-connector-java:jar:5.1.21",
-  :postgresql => "postgresql:postgresql:jar:9.1-901.jdbc4"
+  :db2 => "com.ibm.db2.jcc:jcc4:jar:#{DB2_VERSION}",
+  :mysql => "mysql:mysql-connector-java:jar:#{MYSQL_VERSION}",
+  :postgresql => "postgresql:postgresql:jar:#{POSTGRES_VERSION}"
 }
 DSIG = "javax.xml.xmldsig:xmldsig:jar:1.0"
 DOM4J = "dom4j:dom4j:jar:1.6.1"
@@ -376,29 +376,3 @@ ORBEON_LIBS = ["orbeon:activation-1_0_2:jar:3.8.0.201005141856-CE",
 "orbeon:xerces-xml-apis-2_9_orbeon_20070711:jar:3.8.0.201005141856-CE",
 "orbeon:xmlgraphics-commons-1_1:jar:3.8.0.201005141856-CE"
 ]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
