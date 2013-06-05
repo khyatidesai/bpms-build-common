@@ -94,7 +94,8 @@ SPRING_ETC = ["org.springframework:spring-core:jar:#{SPRING_VERSION}",
             "org.springframework:spring-orm:jar:#{SPRING_VERSION}",
             "org.springframework:spring-tx:jar:#{SPRING_VERSION}",
             "org.springframework:spring-jdbc:jar:#{SPRING_VERSION}",
-            "org.springframework:spring-test:jar:#{SPRING_VERSION}"
+            "org.springframework:spring-test:jar:#{SPRING_VERSION}",
+            "org.springframework:spring-asm:jar:#{SPRING_VERSION}"
              ]
 SPRING_AOP = ["aopalliance:aopalliance:jar:1.0",
                "org.springframework:spring-aop:jar:#{SPRING_VERSION}"]

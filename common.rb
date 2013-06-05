@@ -100,7 +100,8 @@ OPENSSO_CLIENT_SDK = "com.sun:openssoclientsdk:jar:3.0"
 PORTLET_API = "portlet-api:portlet-api:jar:1.0"
 QOM = "net.sf.qom:qom:jar:0.1alpha3"
 SUNMAIL = ["javax.mail:mail:jar:1.4.1", SUNACTIVATION]
-SERVLET_API = "javax.servlet:servlet-api:jar:2.4" 
+SERVLET_API = "javax.servlet:servlet-api:jar:2.4"
+SERVLET_API_25 = "javax.servlet:servlet-api:jar:2.5"
 SHOAL = [ "net.java.dev.shoal:shoal-jxta:jar:1.0.20071114", "net.java.dev.shoal:shoal-gms:jar:1.0.20071114" ]
 SLF4J = {:api => "org.slf4j:slf4j-api:jar:1.4.3" , 
          :log4j12 => "org.slf4j:slf4j-log4j12:jar:1.4.3",
